@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Core.UpStream" CodeBehind="UpStream.svc.cs" %>
