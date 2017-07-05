@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
+using ViewModels.Response;
 
 namespace Core
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IBop" in both code and config file together.
     [ServiceContract]
     public interface IBop
     {
-        [OperationContract]
-        void DoWork();
+        [OperationContract(Name = "LogIn")]
+        [WebInvoke(Method = "POST", UriTemplate = "LogIn/{userName}/{password}",
+            BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        Task<bool> LogIn(string userName, string password);
     }
 }

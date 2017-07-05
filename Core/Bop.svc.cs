@@ -1,18 +1,33 @@
-﻿using System;
+﻿using Core.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Core
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Bop" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Bop.svc or Bop.svc.cs at the Solution Explorer and start debugging.
     public class Bop : IBop
     {
-        public void DoWork()
+        private readonly BopDb _db = new BopDb();
+
+        public async Task<bool> LogIn(string userName, string password)
         {
+            return await Task<bool>.Factory.StartNew(() =>
+            {
+                try
+                {
+                    var query = "select count(*) from dbo.users where user_cellphone = '" + userName + "'and user_password = '" + password + "'";
+                    var sr = _db.Database.SqlQuery<int>(query).FirstOrDefault();
+                    return (sr > 1) ? true : false;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            });
         }
     }
 }
