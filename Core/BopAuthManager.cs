@@ -1,4 +1,5 @@
 ﻿using Core.DataBase;
+using Core.InnerLogic;
 using System;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,7 @@ namespace Core
     public class BopAuthManager : ServiceAuthorizationManager
     {
         private readonly BopDb _db = new BopDb();
+        private readonly Serializers _srz = new Serializers();
 
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
@@ -40,8 +42,8 @@ namespace Core
                                 @"and enti_PublicKey = '" + publicKey + "'";
                     var entity = _db.Database.SqlQuery<GenericBusAuth>(query).FirstOrDefault();
                     if (entity == null) return false;
-                    var recycledHash = CalculateMD5Hash(string.Concat(timestamp, entity.PublicKey, entity.PrivateKey));
-                    return (recycledHash.Equals(hash)) ? true : false;
+                    var recycledHash = _srz.CalculateMD5Hash(string.Concat(timestamp, entity.PublicKey, entity.PrivateKey));
+                    return (recycledHash.Equals(hash));
                 }
             }
             catch (Exception)
@@ -49,19 +51,6 @@ namespace Core
             }
             WebOperationContext.Current.OutgoingResponse.Headers.Add("WWW-Authenticate: Basic realm=\"BOPAuthService\"");
             throw new WebFaultException(HttpStatusCode.Unauthorized);
-        }
-
-        private string CalculateMD5Hash(string input)
-        {
-            var md5 = MD5.Create();
-            var inputBytes = Encoding.ASCII.GetBytes(input);
-            var hash = md5.ComputeHash(inputBytes);
-            var sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb.Append(hash[i].ToString("X2"));
-            }
-            return sb.ToString().ToLower();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Core
                         Password = svcCredentials[1]
                     };
                     var query = @"select enti_name as Entity, enti_User as Systemuser, enti_PublicKey as PublicKey, 
-                                enti_PublicKey as PrivateKey
+                                enti_PrivateKey as PrivateKey
                                 from dbo.entity
                                 where enti_User = '" + user.Name + "'" +
                                 @"and enti_Password = '" + user.Password + "'" +
