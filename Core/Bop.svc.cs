@@ -3,30 +3,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.DataBase;
 using Core.InnerLogic;
+using ViewModels.General;
 
 namespace Core
 {
     public class Bop : IBop
     {
-        private readonly BopDb _db = new BopDb();
-        private readonly Serializers _srz = new Serializers();
+        private readonly BopLogic _bop = new BopLogic();
+        private readonly Funcional _fnc = new Funcional();
+
+        /*Bop Methods*/
 
         public async Task<bool> LogIn(string userName, string password)
         {
-            return await Task<bool>.Factory.StartNew(() =>
-            {
-                try
-                {
-                    var pass = _srz.CalculateMD5Hash(password);
-                    var query = "select count(*) from dbo.users where user_cellphone = '" + userName + "' and user_password = '" + pass + "'";
-                    var sr = _db.Database.SqlQuery<int>(query).FirstOrDefault();
-                    return (sr > 0);
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            });
+            return await _bop.LogIn(userName, password);
+        }
+
+        public async Task<GeneralUser> GetUser(string userName)
+        {
+            return await _bop.GetUser(userName);
+        }
+
+        public async void ForgotPassword(string userName)
+        {
+            await _bop.ForgotPassword(userName);
+        }
+
+        public async Task<bool> UpdateUser(GeneralUser user)
+        {
+            return await _bop.UpdateUser(user);
+        }
+
+        /*Others Methods*/
+
+        public async Task<bool> GetDrugStores(string latitude, string longitude)
+        {
+            return await _fnc.GetDrugStores(latitude, longitude);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Core.InnerLogic
@@ -16,6 +17,26 @@ namespace Core.InnerLogic
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString().ToLower();
+        }
+
+        public string EncryptMd5(string toEncrypt)
+        {
+            try
+            {
+                var md5 = new MD5CryptoServiceProvider();
+                md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(toEncrypt));
+                var result = md5.Hash;
+                var strBuilder = new StringBuilder();
+                for (int i = 0; i < result.Length; i++)
+                {
+                    strBuilder.Append(result[i].ToString("x2"));
+                }
+                return strBuilder.ToString();
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
     }
 }

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="General\GeneralUser.cs" />
     <Compile Include="General\GenericBusAuth.cs" />
     <Compile Include="General\GenericError.cs" />
     <Compile Include="General\GenericUpStreamResponse.cs" />

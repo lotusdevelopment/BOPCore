@@ -113,6 +113,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IBop.cs" />
+    <Compile Include="InnerLogic\BopLogic.cs" />
+    <Compile Include="InnerLogic\Funcional.cs" />
+    <Compile Include="InnerLogic\Mailing.cs" />
     <Compile Include="InnerLogic\Serializers.cs" />
     <Compile Include="IUpStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
