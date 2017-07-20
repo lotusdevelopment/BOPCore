@@ -1,16 +1,21 @@
-﻿using System;
+﻿using Core.InnerLogic;
+using System;
+using System.IO;
+using System.Runtime.Caching;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
 
 namespace Core
 {
-    public class Global : System.Web.HttpApplication
+    public class Global : HttpApplication
     {
+        private readonly Tem _tem = new Tem();
 
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
+            TimServices();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -62,6 +67,16 @@ namespace Core
                               "1728000");
                 HttpContext.Current.Response.End();
             }
+        }
+
+        private void TimServices()
+        {
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(30);
+            var timer = new System.Threading.Timer((ex) =>
+            {
+                _tem.CheckAndSaveTemDirections(_tem.GetPaths(1));
+            }, null, startTimeSpan, periodTimeSpan);
         }
     }
 }
