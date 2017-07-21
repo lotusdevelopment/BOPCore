@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FuncionalNovoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd3" namespace="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Practices.EnterpriseLibrary.Validation.Integration.WCF" />
+      <xsd:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFuncionalNovoService_AcessarSistema_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcessarSistema" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AcessarSistema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcessarSistemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AcessarSistema_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q1:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AcessarSistema_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q2:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarUF_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUF" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarUF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarUFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarUF_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q3:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarUF_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q4:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarCidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCidade" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarCidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarCidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarCidade_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q5:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarCidade_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q6:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarBairro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarBairro" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarBairro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarBairroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarBairro_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q7:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarBairro_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q8:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarRedeCredenciada_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRedeCredenciada" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarRedeCredenciada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarRedeCredenciadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarRedeCredenciada_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q9:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarRedeCredenciada_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q10:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarMedicamento" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarMedicamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamento_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q11:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamento_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q12:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarBeneficioVacina_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarBeneficioVacina" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarBeneficioVacina_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarBeneficioVacinaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarBeneficioVacina_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q13:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarBeneficioVacina_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q14:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarFechamento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFechamento" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarFechamento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFechamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarFechamento_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q15:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ListarFechamento_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q16:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarUsuario_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q17:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarUsuario_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q18:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_BuscarLocalidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarLocalidade" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_BuscarLocalidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarLocalidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_BuscarLocalidade_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q19:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_BuscarLocalidade_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q20:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSegmento_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterSegmento" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSegmento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterSegmentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSegmento_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q21:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSegmento_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q22:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSaldo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterSaldo" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSaldo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterSaldoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSaldo_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q23:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterSaldo_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q24:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AlterarSenhaLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AlterarSenhaLogin" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AlterarSenhaLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AlterarSenhaLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AlterarSenhaLogin_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q25:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AlterarSenhaLogin_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q26:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLoginSenha_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterLoginSenha" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLoginSenha_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterLoginSenhaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLoginSenha_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q27:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLoginSenha_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q28:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterLogin" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLogin_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q29:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterLogin_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q30:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterDeliveryProcessos" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterDeliveryProcessosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessos_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q31:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessos_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q32:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessoDetalhe_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterDeliveryProcessoDetalhe" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessoDetalhe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterDeliveryProcessoDetalheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessoDetalhe_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q33:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterDeliveryProcessoDetalhe_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q34:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterPerfil_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q35:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterPerfil_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q36="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q36:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterFuncionalidade" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterFuncionalidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidade_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q37="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q37:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidade_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q38:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterClienteGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterClienteGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterClienteGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterClienteGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterClienteGrupo_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q39:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterClienteGrupo_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q40="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q40:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidadePerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterFuncionalidadePerfil" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidadePerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterFuncionalidadePerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidadePerfil_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q41:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterFuncionalidadePerfil_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q42="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q42:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterAcessosLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterAcessosLogin" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterAcessosLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterAcessosLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterAcessosLogin_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q43:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterAcessosLogin_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q44:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_Bloquear_InputMessage">
+    <wsdl:part name="parameters" element="tns:Bloquear" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_Bloquear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BloquearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_Bloquear_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q45="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q45:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_Bloquear_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q46:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterExtratoDetalhado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObterExtratoDetalhado" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterExtratoDetalhado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObterExtratoDetalhadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ObterExtratoDetalhado_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q47:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AceitarTermoPrivacidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:AceitarTermoPrivacidade" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AceitarTermoPrivacidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AceitarTermoPrivacidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AceitarTermoPrivacidade_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q48:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_AceitarTermoPrivacidade_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q49="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q49:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamentoDetalhes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarMedicamentoDetalhes" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_ConsultarMedicamentoDetalhes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarMedicamentoDetalhesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaFuncionalidade_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaFuncionalidade" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaFuncionalidade_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaFuncionalidadeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaFuncionalidade_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q50:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaFuncionalidade_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q51="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q51:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaPerfil_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q52="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q52:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaPerfil_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q53:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaAcessos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaAcessos" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaAcessos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaAcessosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaAcessos_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q54:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaAcessos_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q55="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q55:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaUsuarioPerfil_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaUsuarioPerfil" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaUsuarioPerfil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaUsuarioPerfilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaUsuarioPerfil_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q56:BusinessException" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaUsuarioPerfil_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q57:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaLogin" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerenciaLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaLogin_ValidationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q58="http://www.microsoft.com/practices/EnterpriseLibrary/2007/01/wcf/validation" name="detail" element="q58:ValidationFault" />
+  </wsdl:message>
+  <wsdl:message name="IFuncionalNovoService_GerenciaLogin_BusinessExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Excecao" name="detail" element="q59:BusinessException" />
+  </wsdl:message>
+  <wsdl:portType name="IFuncionalNovoService">
+    <wsdl:operation name="AcessarSistema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/AcessarSistema" message="tns:IFuncionalNovoService_AcessarSistema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/AcessarSistemaResponse" message="tns:IFuncionalNovoService_AcessarSistema_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AcessarSistemaValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_AcessarSistema_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AcessarSistemaBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_AcessarSistema_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarUF" message="tns:IFuncionalNovoService_ListarUF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarUFResponse" message="tns:IFuncionalNovoService_ListarUF_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarUFBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ListarUF_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarUFValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ListarUF_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarCidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarCidade" message="tns:IFuncionalNovoService_ListarCidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarCidadeResponse" message="tns:IFuncionalNovoService_ListarCidade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarCidadeBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ListarCidade_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarCidadeValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ListarCidade_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarBairro">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarBairro" message="tns:IFuncionalNovoService_ListarBairro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarBairroResponse" message="tns:IFuncionalNovoService_ListarBairro_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarBairroBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ListarBairro_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarBairroValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ListarBairro_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarRedeCredenciada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarRedeCredenciada" message="tns:IFuncionalNovoService_ListarRedeCredenciada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarRedeCredenciadaResponse" message="tns:IFuncionalNovoService_ListarRedeCredenciada_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarRedeCredenciadaValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ListarRedeCredenciada_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarRedeCredenciadaBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ListarRedeCredenciada_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarMedicamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamento" message="tns:IFuncionalNovoService_ConsultarMedicamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoResponse" message="tns:IFuncionalNovoService_ConsultarMedicamento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ConsultarMedicamento_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ConsultarMedicamento_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarBeneficioVacina">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarBeneficioVacina" message="tns:IFuncionalNovoService_ConsultarBeneficioVacina_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarBeneficioVacinaResponse" message="tns:IFuncionalNovoService_ConsultarBeneficioVacina_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarBeneficioVacinaValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ConsultarBeneficioVacina_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarBeneficioVacinaBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ConsultarBeneficioVacina_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFechamento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarFechamento" message="tns:IFuncionalNovoService_ListarFechamento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarFechamentoResponse" message="tns:IFuncionalNovoService_ListarFechamento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarFechamentoValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ListarFechamento_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ListarFechamentoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ListarFechamento_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarUsuario" message="tns:IFuncionalNovoService_ConsultarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarUsuarioResponse" message="tns:IFuncionalNovoService_ConsultarUsuario_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarUsuarioValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ConsultarUsuario_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarUsuarioBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ConsultarUsuario_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarLocalidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/BuscarLocalidade" message="tns:IFuncionalNovoService_BuscarLocalidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/BuscarLocalidadeResponse" message="tns:IFuncionalNovoService_BuscarLocalidade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/BuscarLocalidadeValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_BuscarLocalidade_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/BuscarLocalidadeBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_BuscarLocalidade_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterSegmento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSegmento" message="tns:IFuncionalNovoService_ObterSegmento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSegmentoResponse" message="tns:IFuncionalNovoService_ObterSegmento_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSegmentoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterSegmento_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSegmentoValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterSegmento_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterSaldo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSaldo" message="tns:IFuncionalNovoService_ObterSaldo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSaldoResponse" message="tns:IFuncionalNovoService_ObterSaldo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSaldoValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterSaldo_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterSaldoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterSaldo_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AlterarSenhaLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/AlterarSenhaLogin" message="tns:IFuncionalNovoService_AlterarSenhaLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/AlterarSenhaLoginResponse" message="tns:IFuncionalNovoService_AlterarSenhaLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AlterarSenhaLoginValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_AlterarSenhaLogin_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AlterarSenhaLoginBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_AlterarSenhaLogin_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterLoginSenha">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginSenha" message="tns:IFuncionalNovoService_ObterLoginSenha_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginSenhaResponse" message="tns:IFuncionalNovoService_ObterLoginSenha_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginSenhaValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterLoginSenha_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginSenhaBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterLoginSenha_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLogin" message="tns:IFuncionalNovoService_ObterLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginResponse" message="tns:IFuncionalNovoService_ObterLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterLogin_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterLoginValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterLogin_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterDeliveryProcessos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessos" message="tns:IFuncionalNovoService_ObterDeliveryProcessos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessosResponse" message="tns:IFuncionalNovoService_ObterDeliveryProcessos_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessosValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterDeliveryProcessos_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessosBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterDeliveryProcessos_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterDeliveryProcessoDetalhe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessoDetalhe" message="tns:IFuncionalNovoService_ObterDeliveryProcessoDetalhe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessoDetalheResponse" message="tns:IFuncionalNovoService_ObterDeliveryProcessoDetalhe_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessoDetalheBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterDeliveryProcessoDetalhe_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessoDetalheValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterDeliveryProcessoDetalhe_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterPerfil" message="tns:IFuncionalNovoService_ObterPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterPerfilResponse" message="tns:IFuncionalNovoService_ObterPerfil_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterPerfilBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterPerfil_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterPerfilValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterPerfil_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterFuncionalidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidade" message="tns:IFuncionalNovoService_ObterFuncionalidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadeResponse" message="tns:IFuncionalNovoService_ObterFuncionalidade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadeValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterFuncionalidade_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadeBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterFuncionalidade_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterClienteGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterClienteGrupo" message="tns:IFuncionalNovoService_ObterClienteGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterClienteGrupoResponse" message="tns:IFuncionalNovoService_ObterClienteGrupo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterClienteGrupoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterClienteGrupo_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterClienteGrupoValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterClienteGrupo_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterFuncionalidadePerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadePerfil" message="tns:IFuncionalNovoService_ObterFuncionalidadePerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadePerfilResponse" message="tns:IFuncionalNovoService_ObterFuncionalidadePerfil_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadePerfilBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterFuncionalidadePerfil_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadePerfilValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterFuncionalidadePerfil_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterAcessosLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterAcessosLogin" message="tns:IFuncionalNovoService_ObterAcessosLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterAcessosLoginResponse" message="tns:IFuncionalNovoService_ObterAcessosLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterAcessosLoginBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterAcessosLogin_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterAcessosLoginValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_ObterAcessosLogin_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Bloquear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/Bloquear" message="tns:IFuncionalNovoService_Bloquear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/BloquearResponse" message="tns:IFuncionalNovoService_Bloquear_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/BloquearValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_Bloquear_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/BloquearBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_Bloquear_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterExtratoDetalhado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterExtratoDetalhado" message="tns:IFuncionalNovoService_ObterExtratoDetalhado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterExtratoDetalhadoResponse" message="tns:IFuncionalNovoService_ObterExtratoDetalhado_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/ObterExtratoDetalhadoBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_ObterExtratoDetalhado_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AceitarTermoPrivacidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/AceitarTermoPrivacidade" message="tns:IFuncionalNovoService_AceitarTermoPrivacidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/AceitarTermoPrivacidadeResponse" message="tns:IFuncionalNovoService_AceitarTermoPrivacidade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AceitarTermoPrivacidadeBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_AceitarTermoPrivacidade_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/AceitarTermoPrivacidadeValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_AceitarTermoPrivacidade_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarMedicamentoDetalhes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoDetalhes" message="tns:IFuncionalNovoService_ConsultarMedicamentoDetalhes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoDetalhesResponse" message="tns:IFuncionalNovoService_ConsultarMedicamentoDetalhes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaFuncionalidade">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaFuncionalidade" message="tns:IFuncionalNovoService_GerenciaFuncionalidade_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaFuncionalidadeResponse" message="tns:IFuncionalNovoService_GerenciaFuncionalidade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaFuncionalidadeBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_GerenciaFuncionalidade_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaFuncionalidadeValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_GerenciaFuncionalidade_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaPerfil" message="tns:IFuncionalNovoService_GerenciaPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaPerfilResponse" message="tns:IFuncionalNovoService_GerenciaPerfil_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaPerfilValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_GerenciaPerfil_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaPerfilBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_GerenciaPerfil_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaAcessos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaAcessos" message="tns:IFuncionalNovoService_GerenciaAcessos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaAcessosResponse" message="tns:IFuncionalNovoService_GerenciaAcessos_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaAcessosBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_GerenciaAcessos_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaAcessosValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_GerenciaAcessos_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaUsuarioPerfil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaUsuarioPerfil" message="tns:IFuncionalNovoService_GerenciaUsuarioPerfil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaUsuarioPerfilResponse" message="tns:IFuncionalNovoService_GerenciaUsuarioPerfil_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaUsuarioPerfilBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_GerenciaUsuarioPerfil_BusinessExceptionFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaUsuarioPerfilValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_GerenciaUsuarioPerfil_ValidationFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaLogin" message="tns:IFuncionalNovoService_GerenciaLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaLoginResponse" message="tns:IFuncionalNovoService_GerenciaLogin_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaLoginValidationFaultFault" name="ValidationFaultFault" message="tns:IFuncionalNovoService_GerenciaLogin_ValidationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFuncionalNovoService/GerenciaLoginBusinessExceptionFault" name="BusinessExceptionFault" message="tns:IFuncionalNovoService_GerenciaLogin_BusinessExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFuncionalNovoService" type="tns:IFuncionalNovoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AcessarSistema">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/AcessarSistema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUF">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ListarUF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarCidade">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ListarCidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarBairro">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ListarBairro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarRedeCredenciada">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ListarRedeCredenciada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarMedicamento">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarBeneficioVacina">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ConsultarBeneficioVacina" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFechamento">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ListarFechamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUsuario">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ConsultarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarLocalidade">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/BuscarLocalidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterSegmento">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterSegmento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterSaldo">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterSaldo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AlterarSenhaLogin">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/AlterarSenhaLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterLoginSenha">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterLoginSenha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterLogin">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterDeliveryProcessos">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterDeliveryProcessoDetalhe">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterDeliveryProcessoDetalhe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterPerfil">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterFuncionalidade">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterClienteGrupo">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterClienteGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterFuncionalidadePerfil">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterFuncionalidadePerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterAcessosLogin">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterAcessosLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Bloquear">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/Bloquear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObterExtratoDetalhado">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ObterExtratoDetalhado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AceitarTermoPrivacidade">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/AceitarTermoPrivacidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarMedicamentoDetalhes">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/ConsultarMedicamentoDetalhes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaFuncionalidade">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/GerenciaFuncionalidade" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaPerfil">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/GerenciaPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaAcessos">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/GerenciaAcessos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaUsuarioPerfil">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/GerenciaUsuarioPerfil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GerenciaLogin">
+      <soap:operation soapAction="http://tempuri.org/IFuncionalNovoService/GerenciaLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ValidationFaultFault">
+        <soap:fault use="literal" name="ValidationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessExceptionFault">
+        <soap:fault use="literal" name="BusinessExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FuncionalNovoService">
+    <wsdl:port name="BasicHttpBinding_IFuncionalNovoService" binding="tns:BasicHttpBinding_IFuncionalNovoService">
+      <soap:address location="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

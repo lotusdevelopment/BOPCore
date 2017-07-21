@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" />
+  <xs:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" />
+  <xs:element name="AcessarSistema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="senha" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcessarSistemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="AcessarSistemaResult" nillable="true" type="q1:RetornoAutenticacao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="uf" nillable="true" type="q2:UF" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarUFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ListarUFResult" nillable="true" type="q3:ArrayOfRetornoUF" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="cidade" nillable="true" type="q4:Cidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarCidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ListarCidadeResult" nillable="true" type="q5:ArrayOfRetornoCidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarBairro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="bairro" nillable="true" type="q6:Bairro" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarBairroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ListarBairroResult" nillable="true" type="q7:ArrayOfRetornoBairro" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRedeCredenciada">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="redeCredenciada" nillable="true" type="q8:RedeCredenciada" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarRedeCredenciadaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ListarRedeCredenciadaResult" nillable="true" type="q9:ArrayOfRetornoRedeCredenciada" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarMedicamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="filtroMedicamento" nillable="true" type="q10:FiltroMedicamento" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarMedicamentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ConsultarMedicamentoResult" nillable="true" type="q11:ArrayOfRetornoMedicamento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarBeneficioVacina">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cpf" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarBeneficioVacinaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConsultarBeneficioVacinaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFechamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="fechamento" nillable="true" type="q12:Fechamento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFechamentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ListarFechamentoResult" nillable="true" type="q13:ArrayOfRetornoFechamento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="filtroUsuario" nillable="true" type="q14:FiltroUsuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ConsultarUsuarioResult" nillable="true" type="q15:ArrayOfRetornoUsuario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarLocalidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="localidade" nillable="true" type="q16:FiltroLocalidadeCep" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="tipoFiltro" type="q17:TipoFiltroLocalidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuscarLocalidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="BuscarLocalidadeResult" nillable="true" type="q18:ArrayOfRetornoLocalidadeCep" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterSegmento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="segmento" nillable="true" type="q19:Segmento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterSegmentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterSegmentoResult" nillable="true" type="q20:ArrayOfRetornoSegmento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterSaldo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codigoCartao" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterSaldoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterSaldoResult" nillable="true" type="q21:ArrayOfRetornoObterSaldo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterarSenhaLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cpf" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataNascimento" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="senhaAtual" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="senhaNova" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cartao" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AlterarSenhaLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="AlterarSenhaLoginResult" nillable="true" type="q22:RetornoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterLoginSenha">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="senha" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cartao" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterLoginSenhaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterLoginSenhaResult" nillable="true" type="q23:RetornoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cpf" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cartao" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterLoginResult" nillable="true" type="q24:RetornoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterDeliveryProcessos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cartao" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterDeliveryProcessosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterDeliveryProcessosResult" nillable="true" type="q25:ArrayOfRetornoProcessos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterDeliveryProcessoDetalhe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="Processos" nillable="true" type="q26:ArrayOfRetornoProcessos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterDeliveryProcessoDetalheResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterDeliveryProcessoDetalheResult" nillable="true" type="q27:RetornoProcessos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterPerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="perfil" nillable="true" type="q28:Perfil" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterPerfilResult" nillable="true" type="q29:ArrayOfRetornoPerfil" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterFuncionalidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="funcionalidade" nillable="true" type="q30:Funcionalidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterFuncionalidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterFuncionalidadeResult" nillable="true" type="q31:ArrayOfRetornoFuncionalidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterClienteGrupo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="clientegrupo" nillable="true" type="q32:ClienteGrupo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterClienteGrupoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterClienteGrupoResult" nillable="true" type="q33:ArrayOfRetornoClienteGrupo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterFuncionalidadePerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="perf" nillable="true" type="q34:Perfil" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterFuncionalidadePerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterFuncionalidadePerfilResult" nillable="true" type="q35:ArrayOfRetornoFuncionalidadePerfil" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterAcessosLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idPerfil" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterAcessosLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterAcessosLoginResult" nillable="true" type="q36:ArrayOfRetornoAcessosLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Bloquear">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="bloqueioCartao" nillable="true" type="q37:BloqueioCartao" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BloquearResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="BloquearResult" nillable="true" type="q38:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterExtratoDetalhado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="detalheExtrato" nillable="true" type="q39:DetalheExtrato" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="opcaoExtrato" type="q40:OpcaoExtrato" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObterExtratoDetalhadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ObterExtratoDetalhadoResult" nillable="true" type="q41:ArrayOfRetornoExtratoDetalhado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceitarTermoPrivacidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="privacidade" nillable="true" type="q42:Privacidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AceitarTermoPrivacidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AceitarTermoPrivacidadeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarMedicamentoDetalhes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="filtroMedicamentoDetalhes" nillable="true" type="q43:FiltroMedicamentoDetalhes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarMedicamentoDetalhesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="ConsultarMedicamentoDetalhesResult" nillable="true" type="q44:RetornoMedicamentoDetalhes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaFuncionalidade">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="funcionalidade" nillable="true" type="q45:Funcionalidade" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaFuncionalidadeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="GerenciaFuncionalidadeResult" nillable="true" type="q46:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaPerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="perfil" nillable="true" type="q47:Perfil" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="GerenciaPerfilResult" nillable="true" type="q48:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaAcessos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idPerfil" type="xs:int" />
+        <xs:element minOccurs="0" name="idFuncionalidade" type="xs:int" />
+        <xs:element minOccurs="0" name="flDelete" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaAcessosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="GerenciaAcessosResult" nillable="true" type="q49:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaUsuarioPerfil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idUsuario" type="xs:int" />
+        <xs:element minOccurs="0" name="idPerfil" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaUsuarioPerfilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="GerenciaUsuarioPerfilResult" nillable="true" type="q50:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="novoLogin" nillable="true" type="q51:NovoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GerenciaLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" minOccurs="0" name="GerenciaLoginResult" nillable="true" type="q52:RetornoBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

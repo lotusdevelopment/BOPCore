@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Retorno" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" />
+  <xs:complexType name="RetornoAutenticacao">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoAutenticacao" nillable="true" type="tns:RetornoAutenticacao" />
+  <xs:complexType name="RetornoBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CNPJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CPF" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CadastroPreAprovado" type="ser:char" />
+      <xs:element minOccurs="0" name="CodigoCartao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCliente" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoDependente" type="xs:int" />
+      <xs:element minOccurs="0" name="CodigoGrupo" type="xs:int" />
+      <xs:element minOccurs="0" name="DescricaoDependente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdChamado" type="xs:int" />
+      <xs:element minOccurs="0" name="IdReembolso" type="xs:int" />
+      <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Matricula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mensagem" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeCliente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeGrupo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Responsavel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Senha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:RetornoStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RetornoBase" nillable="true" type="tns:RetornoBase" />
+  <xs:simpleType name="RetornoStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCESSO" />
+      <xs:enumeration value="ERRO" />
+      <xs:enumeration value="PRIMEIRO_ACESSO" />
+      <xs:enumeration value="SOLICITAR_SENHA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RetornoStatus" nillable="true" type="tns:RetornoStatus" />
+  <xs:complexType name="ArrayOfRetornoUF">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoUF" nillable="true" type="tns:RetornoUF" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoUF" nillable="true" type="tns:ArrayOfRetornoUF" />
+  <xs:complexType name="RetornoUF">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UF" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoUF" nillable="true" type="tns:RetornoUF" />
+  <xs:complexType name="ArrayOfRetornoCidade">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoCidade" nillable="true" type="tns:RetornoCidade" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoCidade" nillable="true" type="tns:ArrayOfRetornoCidade" />
+  <xs:complexType name="RetornoCidade">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoLocalidade" type="xs:int" />
+          <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoCidade" nillable="true" type="tns:RetornoCidade" />
+  <xs:complexType name="ArrayOfRetornoBairro">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoBairro" nillable="true" type="tns:RetornoBairro" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoBairro" nillable="true" type="tns:ArrayOfRetornoBairro" />
+  <xs:complexType name="RetornoBairro">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoBairro" type="xs:int" />
+          <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoBairro" nillable="true" type="tns:RetornoBairro" />
+  <xs:complexType name="ArrayOfRetornoRedeCredenciada">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoRedeCredenciada" nillable="true" type="tns:RetornoRedeCredenciada" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoRedeCredenciada" nillable="true" type="tns:ArrayOfRetornoRedeCredenciada" />
+  <xs:complexType name="RetornoRedeCredenciada">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoRedeCredenciada" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoRegiao" type="xs:int" />
+          <xs:element minOccurs="0" name="Delivery" type="xs:int" />
+          <xs:element minOccurs="0" name="Endereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Homeopatia" type="xs:int" />
+          <xs:element minOccurs="0" name="HoraAtendFerFim" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HoraAtendFerInicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HoraAtendFim" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HoraAtendInicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HoraAtendSabDomFim" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="HoraAtendSabDomInicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Horas24" type="xs:int" />
+          <xs:element minOccurs="0" name="Industrializado" type="xs:int" />
+          <xs:element minOccurs="0" name="Latitude" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Longitude" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Manipulacao" type="xs:int" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeCidade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoRedeCredenciada" nillable="true" type="tns:RetornoRedeCredenciada" />
+  <xs:complexType name="ArrayOfRetornoMedicamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoMedicamento" nillable="true" type="tns:RetornoMedicamento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoMedicamento" nillable="true" type="tns:ArrayOfRetornoMedicamento" />
+  <xs:complexType name="RetornoMedicamento">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Apresentacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoMedicamento" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoPadrao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Desconto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Embalagem" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Formulacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAprovado" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsGPDC" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsGenerico" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsLPM" type="xs:boolean" />
+          <xs:element minOccurs="0" name="K3" type="xs:int" />
+          <xs:element minOccurs="0" name="Laboratorio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrdenarDesconto" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OrdenarNome" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TipoProduto" type="ser:char" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoMedicamento" nillable="true" type="tns:RetornoMedicamento" />
+  <xs:complexType name="ArrayOfRetornoFechamento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoFechamento" nillable="true" type="tns:RetornoFechamento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoFechamento" nillable="true" type="tns:ArrayOfRetornoFechamento" />
+  <xs:complexType name="RetornoFechamento">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoOperacao" type="xs:int" />
+          <xs:element minOccurs="0" name="DataFechamentoLote" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataFim" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataInicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DescontoFolha" type="xs:decimal" />
+          <xs:element minOccurs="0" name="NumeroFechamento" type="xs:int" />
+          <xs:element minOccurs="0" name="ValorEmpresa" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorUsuario" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoFechamento" nillable="true" type="tns:RetornoFechamento" />
+  <xs:complexType name="ArrayOfRetornoUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoUsuario" nillable="true" type="tns:RetornoUsuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoUsuario" nillable="true" type="tns:ArrayOfRetornoUsuario" />
+  <xs:complexType name="RetornoUsuario">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoFilial" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoGrupo" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoSetor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataNascimento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdPerfil" type="xs:int" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeGrupo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomePerfil" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusUsuario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UF" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoUsuario" nillable="true" type="tns:RetornoUsuario" />
+  <xs:complexType name="ArrayOfRetornoLocalidadeCep">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoLocalidadeCep" nillable="true" type="tns:RetornoLocalidadeCep" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoLocalidadeCep" nillable="true" type="tns:ArrayOfRetornoLocalidadeCep" />
+  <xs:complexType name="RetornoLocalidadeCep">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cidade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Endereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UF" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoLocalidadeCep" nillable="true" type="tns:RetornoLocalidadeCep" />
+  <xs:complexType name="ArrayOfRetornoSegmento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoSegmento" nillable="true" type="tns:RetornoSegmento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoSegmento" nillable="true" type="tns:ArrayOfRetornoSegmento" />
+  <xs:complexType name="RetornoSegmento">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoSegmento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="NomeSegmento" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoSegmento" nillable="true" type="tns:RetornoSegmento" />
+  <xs:complexType name="ArrayOfRetornoObterSaldo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoObterSaldo" nillable="true" type="tns:RetornoObterSaldo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoObterSaldo" nillable="true" type="tns:ArrayOfRetornoObterSaldo" />
+  <xs:complexType name="RetornoObterSaldo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Limite" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Periodo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Saldo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Validade" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoObterSaldo" nillable="true" type="tns:RetornoObterSaldo" />
+  <xs:complexType name="RetornoLogin">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="ser:char" />
+          <xs:element minOccurs="0" name="CodigoFilial" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoGrupo" type="xs:int" />
+          <xs:element minOccurs="0" name="DataGeracaoCartao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataNascimento" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataUltimoAcesso" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Delivery" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DescricaoGrupo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlagAcessarSiteAntigo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FlagBeneficioVacina" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FlagCartaoAtivo" type="ser:char" />
+          <xs:element minOccurs="0" name="FlagTermoAceito" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IdPerfil" type="xs:int" />
+          <xs:element minOccurs="0" name="IpUltimoAcesso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Limite" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LinkBeneficioVacina" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Perfil" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusLogin" type="tns:StatusLogin" />
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoLogin" nillable="true" type="tns:RetornoLogin" />
+  <xs:simpleType name="StatusLogin">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ativo" />
+      <xs:enumeration value="Bloqueado" />
+      <xs:enumeration value="Cancelado" />
+      <xs:enumeration value="BloqueioTemporario" />
+      <xs:enumeration value="Suspenso" />
+      <xs:enumeration value="AtivoSemRenovacao" />
+      <xs:enumeration value="BloqueioTelemar">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BloqueioPerdaRoubo">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BloqueioViaInternet">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">36</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BloqueioInclusaoAtivos">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">39</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatusLogin" nillable="true" type="tns:StatusLogin" />
+  <xs:complexType name="ArrayOfRetornoProcessos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoProcessos" nillable="true" type="tns:RetornoProcessos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoProcessos" nillable="true" type="tns:ArrayOfRetornoProcessos" />
+  <xs:complexType name="RetornoProcessos">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Anexos" nillable="true" type="tns:ArrayOfRetornoAnexo" />
+          <xs:element minOccurs="0" name="Beneficiario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CEPEntrega" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoSetor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataAgendamento" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataInclusao" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataModificacao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataPedido" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdLocalEntrega" type="xs:int" />
+          <xs:element minOccurs="0" name="IdStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="Itens" nillable="true" type="tns:ArrayOfRetornoItem" />
+          <xs:element minOccurs="0" name="LocalEntregaDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Observacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pedidos" nillable="true" type="tns:ArrayOfRetornoPedido" />
+          <xs:element minOccurs="0" name="StatusProcesso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UltimoLogin" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoProcessos" nillable="true" type="tns:RetornoProcessos" />
+  <xs:complexType name="ArrayOfRetornoAnexo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoAnexo" nillable="true" type="tns:RetornoAnexo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoAnexo" nillable="true" type="tns:ArrayOfRetornoAnexo" />
+  <xs:complexType name="RetornoAnexo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataInclusao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Extensao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Protocolo" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoAnexo" nillable="true" type="tns:RetornoAnexo" />
+  <xs:complexType name="ArrayOfRetornoItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoItem" nillable="true" type="tns:RetornoItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoItem" nillable="true" type="tns:ArrayOfRetornoItem" />
+  <xs:complexType name="RetornoItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoProduto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Atendente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CRM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CoparticipacaoBeneficiario" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CoparticipacaoCliente" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DataInclusao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataReceita" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="Motivo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MotivoDetalhe" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Observacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PercentualDesconto" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Posologia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QuantidadeAtendida" type="xs:int" />
+          <xs:element minOccurs="0" name="QuantidadeSolicitada" type="xs:int" />
+          <xs:element minOccurs="0" name="StatusItem" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TipoCRM" type="xs:int" />
+          <xs:element minOccurs="0" name="Tratamento" nillable="true" type="tns:RetornoTratamento" />
+          <xs:element minOccurs="0" name="ValorPago" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorUnitario" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoItem" nillable="true" type="tns:RetornoItem" />
+  <xs:complexType name="RetornoProduto">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CRMCRO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CRMCROTipo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CRMUF" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+          <xs:element minOccurs="0" name="Descricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EAN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Laboratorio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoProduto" nillable="true" type="tns:RetornoProduto" />
+  <xs:complexType name="RetornoTratamento">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoProduto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataReceita" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Posologia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QuantidadeLimite" type="xs:int" />
+          <xs:element minOccurs="0" name="QuantidadeUtilizada" type="xs:int" />
+          <xs:element minOccurs="0" name="UsuarioInclusao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoTratamento" nillable="true" type="tns:RetornoTratamento" />
+  <xs:complexType name="ArrayOfRetornoPedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoPedido" nillable="true" type="tns:RetornoPedido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoPedido" nillable="true" type="tns:ArrayOfRetornoPedido" />
+  <xs:complexType name="RetornoPedido">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Atendente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClienteGrupo" nillable="true" type="tns:RetornoClienteGrupo" />
+          <xs:element minOccurs="0" name="Credenciado" nillable="true" type="tns:RetornoCredenciado" />
+          <xs:element minOccurs="0" name="DataCancelamento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataPedido" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DescontoMedio" type="xs:decimal" />
+          <xs:element minOccurs="0" name="InformacoesEntrega" nillable="true" type="tns:RetornoEntregaRastreamento" />
+          <xs:element minOccurs="0" name="Itens" nillable="true" type="tns:ArrayOfRetornoItem" />
+          <xs:element minOccurs="0" name="QuantidadeAtendida" type="xs:int" />
+          <xs:element minOccurs="0" name="QuantidadeSolicitada" type="xs:int" />
+          <xs:element minOccurs="0" name="ResponsavelCancelamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusPedido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalAVista" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalBruto" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalCartao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalLiquido" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoPedido" nillable="true" type="tns:RetornoPedido" />
+  <xs:complexType name="RetornoClienteGrupo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="flagGrupo" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoClienteGrupo" nillable="true" type="tns:RetornoClienteGrupo" />
+  <xs:complexType name="RetornoCredenciado">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArquivoContratoSocial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ArquivoLogoTipo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CPFResponsavel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CargoResponsavel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoRede" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoSegmento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataAlteracao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataInclusao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataNascimentoResp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EmailResponsavel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Endereco" nillable="true" type="tns:RetornoEndereco" />
+          <xs:element minOccurs="0" name="InscricaoEstadual" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeFantasia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeResponsavel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RazaoSocial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RedeOutros" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusAlteracaoSenha" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TelefoneResponsavel" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoCredenciado" nillable="true" type="tns:RetornoCredenciado" />
+  <xs:complexType name="RetornoEndereco">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cidade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Complemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Logradouro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UF" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoEndereco" nillable="true" type="tns:RetornoEndereco" />
+  <xs:complexType name="RetornoEntregaRastreamento">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoEnderecoEntrega">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoRastreamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataCancelamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataEntrega" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataPartida" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataPedidoGerado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataPedidoImpresso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataPedidoSeparado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MotivoCancelamento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoCancelado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoEntregue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoGerado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoImpresso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoSeparado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PedidoTransportadora" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusEntrega" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TipoEntrega" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoEntregaRastreamento" nillable="true" type="tns:RetornoEntregaRastreamento" />
+  <xs:complexType name="RetornoEnderecoEntrega">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Endereco">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AosCuidados" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Observacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PrevisaoEntrega" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoEnderecoEntrega" nillable="true" type="tns:RetornoEnderecoEntrega" />
+  <xs:complexType name="Endereco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bairro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CEP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cidade" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Complemento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Logradouro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UF" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Endereco" nillable="true" type="tns:Endereco" />
+  <xs:complexType name="ArrayOfRetornoPerfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoPerfil" nillable="true" type="tns:RetornoPerfil" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoPerfil" nillable="true" type="tns:ArrayOfRetornoPerfil" />
+  <xs:complexType name="RetornoPerfil">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdPerfil" type="xs:int" />
+          <xs:element minOccurs="0" name="NomePerfil" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoPerfil" nillable="true" type="tns:RetornoPerfil" />
+  <xs:complexType name="ArrayOfRetornoFuncionalidade">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoFuncionalidade" nillable="true" type="tns:RetornoFuncionalidade" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoFuncionalidade" nillable="true" type="tns:ArrayOfRetornoFuncionalidade" />
+  <xs:complexType name="RetornoFuncionalidade">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdFuncionalidade" type="xs:int" />
+          <xs:element minOccurs="0" name="NomeFuncionalidade" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoFuncionalidade" nillable="true" type="tns:RetornoFuncionalidade" />
+  <xs:complexType name="ArrayOfRetornoClienteGrupo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoClienteGrupo" nillable="true" type="tns:RetornoClienteGrupo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoClienteGrupo" nillable="true" type="tns:ArrayOfRetornoClienteGrupo" />
+  <xs:complexType name="ArrayOfRetornoFuncionalidadePerfil">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoFuncionalidadePerfil" nillable="true" type="tns:RetornoFuncionalidadePerfil" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoFuncionalidadePerfil" nillable="true" type="tns:ArrayOfRetornoFuncionalidadePerfil" />
+  <xs:complexType name="RetornoFuncionalidadePerfil">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsConsulta" type="xs:boolean" />
+          <xs:element minOccurs="0" name="NomeFuncionalidade" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="idFuncionalidade" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoFuncionalidadePerfil" nillable="true" type="tns:RetornoFuncionalidadePerfil" />
+  <xs:complexType name="ArrayOfRetornoAcessosLogin">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoAcessosLogin" nillable="true" type="tns:RetornoAcessosLogin" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoAcessosLogin" nillable="true" type="tns:ArrayOfRetornoAcessosLogin" />
+  <xs:complexType name="RetornoAcessosLogin">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Acesso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlConsulta" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Perfil" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoAcessosLogin" nillable="true" type="tns:RetornoAcessosLogin" />
+  <xs:complexType name="ArrayOfRetornoExtratoDetalhado">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetornoExtratoDetalhado" nillable="true" type="tns:RetornoExtratoDetalhado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetornoExtratoDetalhado" nillable="true" type="tns:ArrayOfRetornoExtratoDetalhado" />
+  <xs:complexType name="RetornoExtratoDetalhado">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodigoCredenciado" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodigoCrmo" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoMovimentacao" type="xs:int" />
+          <xs:element minOccurs="0" name="CodigoProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CoparticipaCliente" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CoparticipaPrestador" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CoparticipaUsuario" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DataTransacao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataVenda" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Desconto" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DescontoPerc" type="xs:double" />
+          <xs:element minOccurs="0" name="Endereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MensagemCoparticipa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NomeProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NumeroAutorizacao" type="xs:int" />
+          <xs:element minOccurs="0" name="NumeroServidor" type="xs:int" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/FuncionalNovoClassLibrary.Model.Entrada" minOccurs="0" name="OpcaoExtrato" type="q1:OpcaoExtrato" />
+          <xs:element minOccurs="0" name="PrecoMax" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PrecoTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PrecoVenda" type="xs:decimal" />
+          <xs:element minOccurs="0" name="QtdVenda" type="xs:int" />
+          <xs:element minOccurs="0" name="RBLPrecoTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RBLPrecoVenda" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RBLQtdVendida" type="xs:int" />
+          <xs:element minOccurs="0" name="RBLValorReembolso" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RBSCodigo" type="xs:int" />
+          <xs:element minOccurs="0" name="SubTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorCliente" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorPrestacao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorTransacao" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorUsuario" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ValorVista" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoExtratoDetalhado" nillable="true" type="tns:RetornoExtratoDetalhado" />
+  <xs:complexType name="RetornoMedicamentoDetalhes">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RetornoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="apresentacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="compra" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="condicaoIndividual" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="controlado" type="xs:boolean" />
+          <xs:element minOccurs="0" name="laboratorio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="permiteCompra" type="xs:boolean" />
+          <xs:element minOccurs="0" name="produto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="sexo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="subsidio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tarjado" type="xs:boolean" />
+          <xs:element minOccurs="0" name="temSubsidio" type="xs:boolean" />
+          <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetornoMedicamentoDetalhes" nillable="true" type="tns:RetornoMedicamentoDetalhes" />
+</xs:schema>

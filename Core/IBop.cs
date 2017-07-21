@@ -31,13 +31,6 @@ namespace Core
         [WebInvoke(Method = "PUT", UriTemplate = "UpdateUser",
             BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
-        Task<bool> UpdateUser(GeneralUser user);
-
-        /*Others Methods*/
-
-        [OperationContract(Name = "GetDrugStores")]
-        [WebGet(UriTemplate = "GetDrugStores/{latitude}/{longitude}", RequestFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
-        Task<bool> GetDrugStores(string latitude, string longitude);
+        Task<bool> UpdateUser(GeneralUser user);        
     }
 }

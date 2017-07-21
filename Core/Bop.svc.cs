@@ -32,13 +32,6 @@ namespace Core
         public async Task<bool> UpdateUser(GeneralUser user)
         {
             return await _bop.UpdateUser(user);
-        }
-
-        /*Others Methods*/
-
-        public async Task<bool> GetDrugStores(string latitude, string longitude)
-        {
-            return await _fnc.GetDrugStores(latitude, longitude);
-        }
+        }        
     }
 }

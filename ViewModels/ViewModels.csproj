@@ -50,6 +50,7 @@
     <Compile Include="General\GMapsResponse.cs" />
     <Compile Include="General\UserActivationResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\FuncionalProperties.cs" />
     <Compile Include="Response\SaleMade.cs" />
     <Compile Include="Response\SaleUpdate.cs" />
     <Compile Include="Response\TemProperties.cs" />

@@ -11,11 +11,14 @@ namespace Core
     public class Global : HttpApplication
     {
         private readonly Tem _tem = new Tem();
+        private readonly Funcional _fun = new Funcional();
+        private readonly LocationsServices _lcn = new LocationsServices();
 
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
             TimServices();
+            FuncionalServices();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -75,7 +78,17 @@ namespace Core
             var periodTimeSpan = TimeSpan.FromMinutes(30);
             var timer = new System.Threading.Timer((ex) =>
             {
-                _tem.CheckAndSaveTemDirections(_tem.GetPaths(1));
+                _tem.CheckAndSaveTemDirections(_lcn.GetPaths(1));
+            }, null, startTimeSpan, periodTimeSpan);
+        }
+
+        private void FuncionalServices()
+        {
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(30);
+            var timer = new System.Threading.Timer((ex) =>
+            {
+                _fun.CheckAndSaveFuncionalDirections(_lcn.GetPaths(2));
             }, null, startTimeSpan, periodTimeSpan);
         }
     }

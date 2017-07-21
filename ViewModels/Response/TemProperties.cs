@@ -46,6 +46,15 @@ namespace ViewModels.Response
         public string neighborhood { get; set; }
         public string state { get; set; }
         public string zone { get; set; }
+        public string address { get; set; }
+        public string email { get; set; }
+        public string type { get; set; }
+        public string address_type { get; set; }
+        public string postal_code { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string number { get; set; }
+        public string complement { get; set; }
     }
 
     public class CustomState : TemState

@@ -13,6 +13,7 @@ using System.Device.Location;
 using SaintModeCaching;
 using System.IO;
 using System.Text;
+using System.Globalization;
 
 namespace Core.InnerLogic
 {
@@ -20,6 +21,7 @@ namespace Core.InnerLogic
     {
         private Uri _bA = new Uri("http://private-amnesiac-c0198-tem1.apiary-proxy.com/");
         private readonly Connections _cnn = new Connections();
+        private readonly LocationsServices _lcn = new LocationsServices();
 
         public async Task<List<GeneralIdName>> GetSpecialties()
         {
@@ -94,22 +96,54 @@ namespace Core.InnerLogic
             });
         }
 
-        public async Task<List<TemAccredited>> GetAccredited(string latitude, string longitude, string specialties)
+        public async Task<List<TemAccredited>> GetAccredited(string latitude, string longitude, string range)
         {
             return await Task<List<TemAccredited>>.Factory.StartNew(() =>
             {
                 try
                 {
                     var spc = "specialties=";
-                    if (!string.IsNullOrEmpty(specialties)) spc += specialties;
-                    var searchFactor = SearchPlaces(Convert.ToDouble(latitude), Convert.ToDouble(longitude), 20);
+                    var searchFactor = SearchPlaces(Convert.ToDouble(latitude, CultureInfo.InvariantCulture),
+                        Convert.ToDouble(longitude, CultureInfo.InvariantCulture),
+                        float.Parse(range));
                     var rtn = new List<TemAccredited>();
-                    foreach (var item in searchFactor)
+                    var url = string.Concat("health-units/search-units-filter/100/50?", spc, '&');
+                    var limit = Convert.ToInt32(WebConfigurationManager.AppSettings["MaxResults"]);
+                    foreach (var state in searchFactor)
                     {
-                        var url = string.Concat("health-units/search-units-filter/100/50?", spc, '&');
-                        var query = _cnn.GetTemResponseGetAsync(_bA, url);
-                        var deve = JsonConvert.DeserializeObject<TemAccreditedResult>(query);
-                        foreach (var item2 in deve.data) rtn.Add(item2);
+                        foreach (var city in state.Cities)
+                        {
+                            foreach (var neig in city.Neighborhoods)
+                            {
+                                if (rtn.Count >= limit) return rtn;
+                                var nUrl = url + "state=" + state.state + "&city=" + city.city + "&neighborhood=" + neig.neighborhood;
+                                var query = _cnn.GetTemResponseGetAsync(_bA, nUrl);
+                                var deve = JsonConvert.DeserializeObject<TemAccreditedResult>(query);
+                                foreach (var item in deve.data)
+                                {
+                                    if (rtn.Count >= limit) return rtn;
+                                    var cUrl = "health-unit/" + item.DT_RowId;
+                                    query = _cnn.GetTemResponseGetAsync(_bA, cUrl);
+                                    var nDeve = JsonConvert.DeserializeObject<TemAccredited>(query);
+                                    item.address = nDeve.address;
+                                    item.email = nDeve.email;
+                                    item.type = nDeve.type;
+                                    item.address_type = nDeve.address_type;
+                                    item.postal_code = nDeve.postal_code;
+                                    item.number = nDeve.number;
+                                    item.complement = nDeve.complement;
+                                    var positioning = _lcn.GetLatLanFromAddress(item.address_type, item.address,
+                                        item.number, item.complement, "BR");
+                                    if (!string.IsNullOrEmpty(positioning))
+                                    {
+                                        var positioning2 = positioning.Split(',');
+                                        item.Latitude = positioning2[0];
+                                        item.Longitude = positioning2[1];
+                                    }
+                                    rtn.Add(item);
+                                }
+                            }
+                        }
                     }
                     return rtn;
                 }
@@ -140,7 +174,7 @@ namespace Core.InnerLogic
         {
             try
             {
-                var pc = File.ReadAllText(GetPaths(1));
+                var pc = File.ReadAllText(_lcn.GetPaths(1));
                 if (string.IsNullOrEmpty(pc)) throw new Exception();
                 var places = JsonConvert.DeserializeObject<List<CustomState>>(pc);
                 var lst = new List<CustomState>();
@@ -153,12 +187,12 @@ namespace Core.InnerLogic
                         var ngb = new List<CustomNeighborhood>();
                         foreach (var neigh in city.Neighborhoods)
                         {
-                            var mlat = neigh.Latitude;
-                            var mlng = neigh.Longitude;
-                            var dLat = Rad(Convert.ToDouble(mlat) - lat);
-                            var dLong = Rad(Convert.ToDouble(mlng) - lng);
+                            var mlat = Convert.ToDouble(neigh.Latitude, CultureInfo.InvariantCulture);
+                            var mlng = Convert.ToDouble(neigh.Longitude, CultureInfo.InvariantCulture);
+                            var dLat = _lcn.Rad(mlat - lat);
+                            var dLong = _lcn.Rad(mlng - lng);
                             var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                                Math.Cos(Rad(lat)) * Math.Cos(Rad(lat)) * Math.Sin(dLong / 2) * Math.Sin(dLong / 2);
+                                Math.Cos(_lcn.Rad(lat)) * Math.Cos(_lcn.Rad(lat)) * Math.Sin(dLong / 2) * Math.Sin(dLong / 2);
                             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
                             var d = r * c;
                             if (d <= range) ngb.Add(neigh);
@@ -180,32 +214,6 @@ namespace Core.InnerLogic
         {
             try
             {
-                ///*Separate keys in order to get fun*/
-                //var states = GetStates().Result;
-                //var cities = new List<Dictionary<string, List<TemCity>>>();
-                //var neigh = new List<Dictionary<string, List<TemNeighborhood>>>();
-                //foreach (var state in states)
-                //{
-                //    var dct = new Dictionary<string, List<TemCity>>
-                //{
-                //    { state.state, GetCities(state.state).Result }
-                //};
-                //    cities.Add(dct);
-                //}
-                //foreach (var city in cities)
-                //{
-                //    foreach (var cit in city.Values.FirstOrDefault())
-                //    {
-                //        var dct = new Dictionary<string, List<TemNeighborhood>>
-                //    {
-                //        { cit.city, GetNeighborhoods(city.Keys.FirstOrDefault(), cit.city).Result }
-                //    };
-                //        neigh.Add(dct);
-                //    }
-                //}
-
-                /*All in one place for specific searching*/
-
                 var places = new BrazilianPlaces().GetBrazilianPlaces();
                 foreach (var place in places)
                 {
@@ -225,7 +233,7 @@ namespace Core.InnerLogic
                             {
                                 neighborhood = ngh.neighborhood
                             };
-                            var positioning = GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT");
+                            var positioning = _lcn.GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT");
                             if (!string.IsNullOrEmpty(positioning))
                             {
                                 var positioning2 = positioning.Split(',');
@@ -252,45 +260,6 @@ namespace Core.InnerLogic
 
                 throw;
             }
-        }
-
-        private string GetLatLanFromService(string state, string city, string neigh, string country, string language)
-        {
-            try
-            {
-                var gUrl = string.Concat("https://maps.googleapis.com/maps/api/geocode/json?address=", neigh,
-                    "&components=country:", country, "|administrative_area:", state,
-                    "&key=", WebConfigurationManager.AppSettings["GoogleTkey"]);
-                var response = _cnn.GetResponseGet(gUrl);
-                var obj = JsonConvert.DeserializeObject<GMapsResponse>(response);
-                return string.Concat(obj.results.FirstOrDefault().geometry.location.lat,
-                    ',', obj.results.FirstOrDefault().geometry.location.lng);
-            }
-            catch (Exception e)
-            {
-                return "";
-            }
-        }
-
-        private double Rad(double x)
-        {
-            return x * Math.PI / 180;
-        }
-
-        public string GetPaths(int type)
-        {
-            var pathR = "";
-            switch (type)
-            {
-                case 1:
-                    var path = AppDomain.CurrentDomain.BaseDirectory;
-                    var dir = Path.GetDirectoryName(path);
-                    dir += "\\Helpers";
-                    if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-                    pathR = dir + "\\Tem_places.json";
-                    break;
-            }
-            return pathR;
         }
     }
 }

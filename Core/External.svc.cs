@@ -13,6 +13,7 @@ namespace Core
     public class External : IExternal
     {
         private readonly Tem _tem = new Tem();
+        private readonly Funcional _fun = new Funcional();
 
         public async Task<List<GeneralIdName>> GetTemSpecialties()
         {
@@ -34,14 +35,34 @@ namespace Core
             return await _tem.GetNeighborhoods(state, city);
         }
 
-        public async Task<List<TemAccredited>> GetTemAccredited(string latitude, string longitude, string specialties)
+        public async Task<List<TemAccredited>> GetTemAccredited(string latitude, string longitude,  string range)
         {
-            return await _tem.GetAccredited(latitude, longitude, specialties);
+            return await _tem.GetAccredited(latitude, longitude, range);
         }
 
         public async Task<List<GeneralIdName>> GetTemAccreditedDetails()
         {
             return await _tem.GetAccreditedDetails();
+        }
+
+        public async Task<List<FuncionalState>> GetFuncionalStates()
+        {
+            return await _fun.GetStates();
+        }
+
+        public async Task<List<FuncionalCity>> GetFuncionalCities(string state)
+        {
+            return await _fun.GetCities(state);
+        }
+
+        public async Task<List<FuncionalAccredited>> GetFuncionalDrugStores(string latitude, string longitude, string range)
+        {
+            return await _fun.GetDrugStores(latitude, longitude, range);
+        }
+
+        public async Task<List<FuncionalNeighborhood>> GetFuncionalNeighborhoods(string cityCode)
+        {
+            return await _fun.GetNeighborhoods(Convert.ToInt32(cityCode));
         }
     }
 }

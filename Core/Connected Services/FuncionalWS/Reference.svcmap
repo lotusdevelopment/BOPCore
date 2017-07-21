@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f96117e7-f7f9-4c21-bc12-602261117091" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FuncionalNovoService.xsd" MetadataType="Schema" ID="912b277f-ba8c-40d3-a2c2-9850f77768f3" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd4" />
+    <MetadataFile FileName="FuncionalNovoService.wsdl" MetadataType="Wsdl" ID="06de8a1a-8d34-479e-95e0-27207206667b" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?wsdl" />
+    <MetadataFile FileName="FuncionalNovoService1.xsd" MetadataType="Schema" ID="143d855e-1aec-4b2a-b355-d4119e0ebb7a" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd5" />
+    <MetadataFile FileName="FuncionalNovoService2.xsd" MetadataType="Schema" ID="2e8cbd38-cc77-4c10-a6af-a750040ff303" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FuncionalNovoService3.xsd" MetadataType="Schema" ID="c4a8d062-a265-458c-9020-15976c57d930" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FuncionalNovoService4.xsd" MetadataType="Schema" ID="c9cf987a-8379-47e5-969f-4d82d34f7278" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FuncionalNovoService5.xsd" MetadataType="Schema" ID="249515c6-d70a-4f74-b211-1be0aee38a4e" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd6" />
+    <MetadataFile FileName="FuncionalNovoService.disco" MetadataType="Disco" ID="a8e5578b-c0cc-48d1-8f08-4ac7bcd3fea7" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?disco" />
+    <MetadataFile FileName="FuncionalNovoService6.xsd" MetadataType="Schema" ID="d7637097-1c9c-4e4b-9903-0a32e122f0ec" SourceId="1" SourceUrl="http://177.47.22.163:9000/ServicoBeneficiario/FuncionalNovoService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -90,6 +90,76 @@
   <ItemGroup>
     <Content Include="Bop.svc" />
     <Content Include="BopInner.svc" />
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoAcessosLogin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoAutenticacao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoBairro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoCidade.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoClienteGrupo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoExtratoDetalhado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoFechamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoFuncionalidade.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoFuncionalidadePerfil.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoLocalidadeCep.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoLogin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoMedicamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoMedicamentoDetalhes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoObterSaldo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoPerfil.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoProcessos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoRedeCredenciada.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoSegmento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoUF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FuncionalWS\Core.FuncionalWS.RetornoUsuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService.disco" />
+    <None Include="Connected Services\FuncionalWS\configuration91.svcinfo" />
+    <None Include="Connected Services\FuncionalWS\configuration.svcinfo" />
+    <None Include="Connected Services\FuncionalWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="DataBase\Bop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Bop.Context.cs</LastGenOutput>
@@ -114,6 +184,11 @@
     <Compile Include="BopAuthManager.cs" />
     <Compile Include="BopInner.svc.cs">
       <DependentUpon>BopInner.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\FuncionalWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Bop.Context.cs">
       <AutoGen>True</AutoGen>
@@ -142,6 +217,7 @@
     <Compile Include="InnerLogic\BopLogic.cs" />
     <Compile Include="InnerLogic\Connections.cs" />
     <Compile Include="InnerLogic\Funcional.cs" />
+    <Compile Include="InnerLogic\LocationsServices.cs" />
     <Compile Include="InnerLogic\Mailing.cs" />
     <Compile Include="InnerLogic\Serializers.cs" />
     <Compile Include="InnerLogic\Tem.cs" />
@@ -165,6 +241,28 @@
       <DependentUpon>Bop.edmx</DependentUpon>
     </Content>
     <Content Include="packages.config" />
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService.wsdl" />
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FuncionalWS\FuncionalNovoService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -184,6 +282,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\FuncionalWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
