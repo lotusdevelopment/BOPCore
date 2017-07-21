@@ -189,6 +189,7 @@ namespace Core.InnerLogic
         {
             try
             {
+                _lcn.SaveProcessLog("", "---Start Update Funcional---");
                 var placesT = new BrazilianPlaces().GetBrazilianPlaces();
                 var places = new List<FuncionalState>();
                 foreach (var item in placesT)

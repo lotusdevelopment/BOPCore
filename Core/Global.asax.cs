@@ -17,6 +17,7 @@ namespace Core
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
+            _lcn.SaveProcessLog("","---Start Update Services---");
             TimServices();
             FuncionalServices();
         }

@@ -214,6 +214,7 @@ namespace Core.InnerLogic
         {
             try
             {
+                _lcn.SaveProcessLog("", "---Start Update Tem---");
                 var places = new BrazilianPlaces().GetBrazilianPlaces();
                 foreach (var place in places)
                 {
