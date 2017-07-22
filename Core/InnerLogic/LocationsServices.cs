@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using ViewModels.General;
@@ -14,22 +15,26 @@ namespace Core.InnerLogic
     {
         private readonly Connections _cnn = new Connections();
 
-        public string GetLatLanFromService(string state, string city, string neigh, string country, string language)
+        public async Task<string> GetLatLanFromService(string state, string city, string neigh, string country, string language)
         {
-            try
+            return await Task<string>.Factory.StartNew(() =>
             {
-                var gUrl = string.Concat("https://maps.googleapis.com/maps/api/geocode/json?address=", neigh,
-                    "&components=country:", country, "|administrative_area:", state,
-                    "&key=", WebConfigurationManager.AppSettings["GoogleTkey"]);
-                var response = _cnn.GetResponseGet(gUrl);
-                var obj = JsonConvert.DeserializeObject<GMapsResponse>(response);
-                return string.Concat(obj.results.FirstOrDefault().geometry.location.lat,
-                    ',', obj.results.FirstOrDefault().geometry.location.lng);
-            }
-            catch (Exception e)
-            {
-                return "";
-            }
+                try
+                {
+                    var gUrl = string.Concat("https://maps.googleapis.com/maps/api/geocode/json?address=", neigh,
+                        "&components=country:", country, "|administrative_area:", state,
+                        "&key=", WebConfigurationManager.AppSettings["GoogleTkey"]);
+                    var response = _cnn.GetResponseGet(gUrl);
+                    var obj = JsonConvert.DeserializeObject<GMapsResponse>(response);
+                    return string.Concat(obj.results.FirstOrDefault().geometry.location.lat,
+                        ',', obj.results.FirstOrDefault().geometry.location.lng);
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            });
+
         }
 
         public string GetLatLanFromAddress(string address, string number, string type, string complement, string language)

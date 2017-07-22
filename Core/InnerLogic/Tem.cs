@@ -234,7 +234,7 @@ namespace Core.InnerLogic
                             {
                                 neighborhood = ngh.neighborhood
                             };
-                            var positioning = _lcn.GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT");
+                            var positioning = _lcn.GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT").Result;
                             if (!string.IsNullOrEmpty(positioning))
                             {
                                 var positioning2 = positioning.Split(',');
@@ -256,10 +256,9 @@ namespace Core.InnerLogic
                     fs.Write(info, 0, info.Length);
                 }
             }
-            catch (Exception)
+            catch (Exception exx)
             {
-
-                throw;
+                //
             }
         }
     }

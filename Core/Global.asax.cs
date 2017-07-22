@@ -3,7 +3,9 @@ using System;
 using System.IO;
 using System.Runtime.Caching;
 using System.ServiceModel.Activation;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Routing;
 
 namespace Core
@@ -17,9 +19,11 @@ namespace Core
         protected void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);
-            _lcn.SaveProcessLog("","---Start Update Services---");
-            TimServices();
-            FuncionalServices();
+            _lcn.SaveProcessLog("", "---Start Update Services---");
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(Convert.ToInt32(WebConfigurationManager.AppSettings["TimeIntervalHours"]));
+            Task.Factory.StartNew(() => TimServices(startTimeSpan, periodTimeSpan));
+            //Task.Factory.StartNew(() => FuncionalServices(startTimeSpan, periodTimeSpan));
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -73,20 +77,16 @@ namespace Core
             }
         }
 
-        private void TimServices()
+        private void TimServices(TimeSpan startTimeSpan, TimeSpan periodTimeSpan)
         {
-            var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromMinutes(30);
             var timer = new System.Threading.Timer((ex) =>
             {
-                _tem.CheckAndSaveTemDirections(_lcn.GetPaths(1));
+                Task.Factory.StartNew(() => _tem.CheckAndSaveTemDirections(_lcn.GetPaths(1)));
             }, null, startTimeSpan, periodTimeSpan);
         }
 
-        private void FuncionalServices()
+        private void FuncionalServices(TimeSpan startTimeSpan, TimeSpan periodTimeSpan)
         {
-            var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromMinutes(30);
             var timer = new System.Threading.Timer((ex) =>
             {
                 _fun.CheckAndSaveFuncionalDirections(_lcn.GetPaths(2));

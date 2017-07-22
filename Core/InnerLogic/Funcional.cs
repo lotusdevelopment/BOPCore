@@ -220,7 +220,8 @@ namespace Core.InnerLogic
                                 neighborhood = ngh.neighborhood,
                                 NeighborhoodCode = ngh.NeighborhoodCode
                             };
-                            var positioning = _lcn.GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT");
+                            //var positioning = _lcn.GetLatLanFromService(place.StateName, city.city, ngh.neighborhood, "BR", "PT");
+                            var positioning = "";
                             if (!string.IsNullOrEmpty(positioning))
                             {
                                 var positioning2 = positioning.Split(',');
