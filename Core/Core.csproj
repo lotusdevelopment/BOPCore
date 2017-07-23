@@ -204,6 +204,7 @@
     <Compile Include="Account.svc.cs">
       <DependentUpon>Account.svc</DependentUpon>
     </Compile>
+    <Compile Include="Authorizations.cs" />
     <Compile Include="Bop.svc.cs">
       <DependentUpon>Bop.svc</DependentUpon>
     </Compile>
@@ -234,6 +235,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Bop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\Excepciones.cs">
+      <DependentUpon>GeneralDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\GeneralDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,6 +252,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GeneralDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\LogWs.cs">
+      <DependentUpon>GeneralDb.tt</DependentUpon>
     </Compile>
     <Compile Include="External.svc.cs">
       <DependentUpon>External.svc</DependentUpon>
@@ -270,10 +277,14 @@
     <Compile Include="InnerLogic\Tem.cs" />
     <Compile Include="IReports.cs" />
     <Compile Include="IUpStream.cs" />
+    <Compile Include="LotusSales.svc.cs">
+      <DependentUpon>LotusSales.svc</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports.svc.cs">
       <DependentUpon>Reports.svc</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Encryption.cs" />
     <Compile Include="Resources\Languages.cs" />
     <Compile Include="Resources\Mailing.cs" />
     <Compile Include="Resources\Notifications.cs" />
@@ -333,10 +344,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Encrypt\Encrypt.csproj">
-      <Project>{3dca64ae-6a45-434d-b690-555d60ec2e0d}</Project>
-      <Name>Encrypt</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{a9feeed2-9bdf-412c-b358-6b5b35de4360}</Project>
       <Name>ViewModels</Name>

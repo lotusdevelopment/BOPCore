@@ -62,6 +62,7 @@
     <Compile Include="General\DashboardReportsStatistics.cs" />
     <Compile Include="General\Entity.cs" />
     <Compile Include="General\Error.cs" />
+    <Compile Include="General\Excepciones.cs" />
     <Compile Include="General\ExternalPlans.cs" />
     <Compile Include="General\FileData.cs" />
     <Compile Include="General\FormasPago.cs" />

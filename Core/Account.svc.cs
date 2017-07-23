@@ -18,9 +18,9 @@ namespace Core
 {
     public class Account : IAccount
     {
-        private readonly GeneralDb _db = new GeneralDb();        
+        private readonly GeneralDb _db = new GeneralDb();
         private readonly Mailing _mail = new Mailing();
-        
+
         public async Task<LoginResponse> LoginSystem(LoginRequest login)
         {
             return await Task<LoginResponse>.Factory.StartNew(() =>
@@ -33,6 +33,7 @@ namespace Core
                     {
                         Valid = false
                     };
+                if (string.IsNullOrEmpty(user.ProfilePicture)) user.ProfilePicture = "http://coderthemes.com/minton_2.3/material/assets/images/users/avatar-2.jpg";
                 var rtn = new LoginResponse
                 {
                     Valid = true,

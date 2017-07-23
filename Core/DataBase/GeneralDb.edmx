@@ -4,20 +4,160 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BOP_TESTModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="BOP_TESTModel1StoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="BOP_TESTModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Excepciones">
+          <Key>
+            <PropertyRef Name="IdExcepciones" />
+          </Key>
+          <Property Name="IdExcepciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Source" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogWs">
+          <Key>
+            <PropertyRef Name="IdLogWs" />
+          </Key>
+          <Property Name="IdLogWs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ip" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="100" />
+          <Property Name="Usuario" Type="varchar" MaxLength="200" />
+          <Property Name="Proceso" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DescripcionProceso" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Function Name="SaveAllTheSales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerId" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerLastName" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerBirthday" Type="date" Mode="In" />
+          <Parameter Name="CustomerEmail" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerCellphone" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerGender" Type="varchar" Mode="In" />
+          <Parameter Name="CountryId" Type="int" Mode="In" />
+          <Parameter Name="StatesId" Type="varchar" Mode="In" />
+          <Parameter Name="CityId" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerZipCode" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerStreet" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerPlateNumber" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerComplement" Type="varchar" Mode="In" />
+          <Parameter Name="CustomerNameMother" Type="varchar" Mode="In" />
+          <Parameter Name="PlanId" Type="int" Mode="In" />
+          <Parameter Name="PaymentType" Type="int" Mode="In" />
+          <Parameter Name="SellerCode" Type="varchar" Mode="In" />
+          <Parameter Name="BuyerName" Type="varchar" Mode="In" />
+          <Parameter Name="BuyerCellPhone" Type="varchar" Mode="In" />
+          <Parameter Name="BuyerEmail" Type="varchar" Mode="In" />
+          <Parameter Name="CompanySaleId" Type="varchar" Mode="In" />
+          <Parameter Name="Mainly" Type="int" Mode="In" />
+          <Parameter Name="MainlyId" Type="varchar" Mode="In" />
+          <Parameter Name="Url" Type="varchar" Mode="In" />
+          <Parameter Name="Bus" Type="int" Mode="In" />
+          <Parameter Name="BeginingDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+          <Parameter Name="DateSaleReal" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="BOP_TESTModel1StoreContainer">
+          <EntitySet Name="Excepciones" EntityType="Self.Excepciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogWs" EntityType="Self.LogWs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BOP_TESTModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="GeneralDb" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="GeneralDb" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Excepciones" EntityType="BOP_TESTModel1.Excepciones" />
+          <EntitySet Name="LogWs" EntityType="BOP_TESTModel1.LogWs" />
+          <FunctionImport Name="SaveAllTheSales" ReturnType="Collection(String)">
+            <Parameter Name="CustomerId" Mode="In" Type="String" />
+            <Parameter Name="CustomerFirstName" Mode="In" Type="String" />
+            <Parameter Name="CustomerLastName" Mode="In" Type="String" />
+            <Parameter Name="CustomerBirthday" Mode="In" Type="DateTime" />
+            <Parameter Name="CustomerEmail" Mode="In" Type="String" />
+            <Parameter Name="CustomerCellphone" Mode="In" Type="String" />
+            <Parameter Name="CustomerGender" Mode="In" Type="String" />
+            <Parameter Name="CountryId" Mode="In" Type="Int32" />
+            <Parameter Name="StatesId" Mode="In" Type="String" />
+            <Parameter Name="CityId" Mode="In" Type="String" />
+            <Parameter Name="CustomerZipCode" Mode="In" Type="String" />
+            <Parameter Name="CustomerStreet" Mode="In" Type="String" />
+            <Parameter Name="CustomerPlateNumber" Mode="In" Type="String" />
+            <Parameter Name="CustomerComplement" Mode="In" Type="String" />
+            <Parameter Name="CustomerNameMother" Mode="In" Type="String" />
+            <Parameter Name="PlanId" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentType" Mode="In" Type="Int32" />
+            <Parameter Name="SellerCode" Mode="In" Type="String" />
+            <Parameter Name="BuyerName" Mode="In" Type="String" />
+            <Parameter Name="BuyerCellPhone" Mode="In" Type="String" />
+            <Parameter Name="BuyerEmail" Mode="In" Type="String" />
+            <Parameter Name="CompanySaleId" Mode="In" Type="String" />
+            <Parameter Name="Mainly" Mode="In" Type="Int32" />
+            <Parameter Name="MainlyId" Mode="In" Type="String" />
+            <Parameter Name="Url" Mode="In" Type="String" />
+            <Parameter Name="Bus" Mode="In" Type="Int32" />
+            <Parameter Name="BeginingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DateSaleReal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Excepciones">
+          <Key>
+            <PropertyRef Name="IdExcepciones" />
+          </Key>
+          <Property Name="IdExcepciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LogWs">
+          <Key>
+            <PropertyRef Name="IdLogWs" />
+          </Key>
+          <Property Name="IdLogWs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ip" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Proceso" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionProceso" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BOP_TESTModel1StoreContainer" CdmEntityContainer="GeneralDb" />
+        <EntityContainerMapping StorageEntityContainer="BOP_TESTModel1StoreContainer" CdmEntityContainer="GeneralDb" >
+          <EntitySetMapping Name="Excepciones">
+            <EntityTypeMapping TypeName="BOP_TESTModel1.Excepciones">
+              <MappingFragment StoreEntitySet="Excepciones">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="IdExcepciones" ColumnName="IdExcepciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogWs">
+            <EntityTypeMapping TypeName="BOP_TESTModel1.LogWs">
+              <MappingFragment StoreEntitySet="LogWs">
+                <ScalarProperty Name="DescripcionProceso" ColumnName="DescripcionProceso" />
+                <ScalarProperty Name="Proceso" ColumnName="Proceso" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="IdLogWs" ColumnName="IdLogWs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SaveAllTheSales" FunctionName="BOP_TESTModel1.Store.SaveAllTheSales" />
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

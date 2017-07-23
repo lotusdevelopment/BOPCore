@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encrypt
+namespace Core.Resources
 {
     public class Encryption
     {
@@ -69,5 +69,4 @@ namespace Encrypt
             }
         }
     }
-
 }
