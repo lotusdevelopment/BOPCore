@@ -1,0 +1,283 @@
+﻿@using System.Configuration
+@{
+    Layout = null;
+    var key = ConfigurationManager.AppSettings["GoogleApiKey"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta Externa</title>
+    <link href="~/Content/materialize.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="~/Content/ExternalSale.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="container row">
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="http://lotusodonto.wixsite.com/newsmilego" class="cookie brand-logo center logo-title">
+                        SmileGO
+                    </a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuH">Home</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuPD">Planes Dentales</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuRO">Red de odontólogos</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuFAQ">FAQ</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuH">Home</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuPD">Planes Dentales</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuRO">Red de odontólogos</a></li>
+                        <li><a href="http://lotusodonto.wixsite.com/newsmilego" class="MenuFAQ">FAQ</a></li>
+                        <li>
+                            <ul class="center-languageSelection languageSelection">
+                                <li data-lang="es"><a href="@Url.Action("ExternalSale", "Sales", new {lang = "es"})">ES</a></li>
+                                <li data-lang="en"><a href="@Url.Action("ExternalSale", "Sales", new {lang = "en"})">EN</a></li>
+                                <li data-lang="pr"><a href="@Url.Action("ExternalSale", "Sales", new {lang = "pr"})">PT</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="right  hide-on-med-and-down languageSelection">
+                        <li data-lang="es"><a href="@Url.Action("ExternalSale", "Sales", new {lang = "es"})">ES</a></li>
+                        <li data-lang="en"><a href="@Url.Action("ExternalSale", "Sales", new {lang = "en"})">EN</a></li>
+                        <li data-lang="pr"><a href="@Url.Action("ExternalSale", "Sales", new { lang= "pr"})">PT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="row" id="sale-body">
+            <div class="valign-wrapper col s6 m6 offset-m3">
+                <div class="col s12 m12 sale-section" id="tab1">
+                    <h4 class="message1">
+                        Hola Soy Maya, voy buscar un excelente plan
+                        en pocos segundos. ¿Estas listo?
+                    </h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="Name" type="text" class="validate">
+                            <label for="Name" class="Fnaming">NOMBRE</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="LastName" type="text" class="validate">
+                            <label for="LastName" class="Flastning">APELLIDO</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt1" value="CONTINUAR" class="e-button cotinueM" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tab2">
+                    <h4 class="message2">
+                        Gusto en conocerte <span class="accent-name naming"></span> , ¿en donde deseas
+                        usar tu plan?
+                    </h4>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">add_location</i>
+                            <input id="Country" type="text" class="validateA">
+                            <label for="Country" class="Flocation">Localización</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt2" value="CONTINUAR" class="e-button cotinueM" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tab3">
+                    <h4 class="message3">
+                        ¿Buscas un plan Individual o Familiar?
+                    </h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <div class="bordered-item" data-fam="false">
+                                <span class="Sindi">Individual</span>
+                                <img src="~/Content/Images/individual.png" alt="Individual" />
+                            </div>
+                        </div>
+                        <div class="input-field col s6">
+                            <div class="bordered-item" data-fam="true">
+                                <span class="Sfami">Familiar</span>
+                                <img src="~/Content/Images/familiar.png" alt="Familiar" class="inner-image-bodered-item" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt3" value="CONTINUAR" class="e-button cotinueM" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tab4">
+                    <h4 class="message4">
+                        <span class="accent-name naming"></span>, tu correo electrónico y teléfono celular y estaremos listos
+                    </h4>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">email</i>
+                            <input id="Email" type="email" class="validateB">
+                            <label for="Email" class="Femail">Correo Electrónico</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phonelink_ring</i>
+                            <input id="MobPhone" type="tel" class="validateB">
+                            <label for="MobPhone" class="Fcel">Celular</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt4" value="CONTINUAR" class="e-button cotinueM" />
+                            <img src="~/Content/Images/loading.gif" alt="Cargando Planes" class="charging-plans c-p1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tab5">
+                    <h4 class="message5">
+                        <span class="accent-name planNumber">2</span> opciones de plan <span class="accent-name planType"></span> en <span class="accent-name planCountry"></span>
+                    </h4>
+                    <div class="row" id="DrawPlans">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt5" value="COMPRAR" class="e-button buyM" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tab6">
+                    <h4 class="message6">
+                        Ingresa la información de los beneficiarios.
+                    </h4>
+                    <div class="row" id="Bens">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="Dbt6" value="CONTINUAR" class="e-button cotinueM" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tabP">
+                    <h4 class="message7">
+                        Ingresa los datos de tu tarjeta.
+                    </h4>
+                    <div class="row">
+                        <div class="input-field col s12 m12">
+                            <input type="text" id="Ccn" value="" placeholder="Numero de la tarjeta" class="validateF Fcardnumber" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="number" id="Cvc" placeholder="Cvc" class="validateF Fcardcvc" min="000" max="9999" />
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="number" id="Cm" placeholder="Mes" class="validateF Fcardmonth" />
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="number" id="Cy" placeholder="Año" class="validateF Fcardyear" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12">
+                            <input type="text" id="Ch" value="" placeholder="Nombre del titular de la tarjeta" class="validateF Fcardholder" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="DbtP" value="REALIZAR PAGO" class="e-button rpp" />
+                            <img src="~/Content/Images/loading.gif" alt="Cargando Planes" class="charging-plans c-p2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tabS">
+                    <h4 class="message8">
+                        Gracias por tu compra, el proceso de venta ha sido satisfactorio.
+                    </h4>
+                    <span class="suc-pay message9">El código de la venta es <label class="pytId highlight-text"></label>.</span>
+                    <span class="suc-pay message10">Puedes empezar a usar tu plan a partir del <label class="pytFrom highlight-text"></label>.</span>
+                    <span class="suc-pay message11">Tu plan vence el <label class="pytTo highlight-text"></label>.</span>
+                </div>
+                <div class="col s12 m12 sale-section" id="tabF">
+                    <h4 class="message12">
+                        Hubo un error en el proceso de compras.
+                    </h4>
+                    <label class="message13">El error reportado por el sistema es: </label> <br />
+                    <label class="pytError"></label>
+                    <div class="row">
+                        <div class="input-field col s12 m12 offset-m4">
+                            <input type="submit" id="DbtR" value="REVISAR PAGO" class="e-button rvp" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m12 sale-section" id="tabNP">
+                    <h4 class="message14">
+                        No hay planes disponibles en este área
+                    </h4>
+                    <label class="message15">No te preocupes, tenemos tus datos y cuando tengamos planes disponibles en tu área te contáctaremos.</label>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="row black-one">
+                <div class="col s2 offset-s5 upper-border">
+                    <h4>LINKS</h4>
+                    <ul>
+                        <li>Home</li>
+                        <li>Planes Dentales</li>
+                        <li>Red de odontólogos</li>
+                        <li>FAQ</li>
+                    </ul>
+                </div>
+                <div class="col s2 upper-border">
+                    <h4>ABOUT</h4>
+                    <p class="footer-p">
+                        <span class="footer-span">Lotus Odonto USA Inc</span>
+                        <span class="footer-span">200 SE 1ST Street Suite 604,</span>
+                        <span class="footer-span">Miami, Fl</span>
+                        <span class="footer-span">33131</span>
+                    </p>
+                </div>
+                <div class="col s2 upper-border">
+                    <h4>SOCIAL</h4>
+                    <div class="footer-social">
+                        <a href="#">
+                            <img src="https://static.wixstatic.com/media/7528824071724d12a3e6c31eee0b40d4.png/v1/fill/w_42,h_42,al_c,usm_0.66_1.00_0.01/7528824071724d12a3e6c31eee0b40d4.png" alt="LinkedIn" />
+                        </a>
+                        <a href="#">
+                            <img src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_42,h_42,al_c,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.png" alt="Facebook" />
+                        </a>
+                        <a href="#">
+                            <img src="https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png/v1/fill/w_42,h_42,al_c,usm_0.66_1.00_0.01/01ab6619093f45388d66736ec22e5885.png" alt="Twitter" />
+                        </a>
+                        <a href="#">
+                            <img src="https://static.wixstatic.com/media/eb9767422f0e4c41a507d3e67c4ebac8.png/v1/fill/w_42,h_42,al_c,usm_0.66_1.00_0.01/eb9767422f0e4c41a507d3e67c4ebac8.png" alt="Google" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row white-one">
+                <div class="col s6 offset-s5"><span class="flow-text">&copy; @DateTime.Now.Year by Lotus Odonto.</span></div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/ExternalSale.js"></script>
+    <script src="~/Scripts/jquery.creditCardValidator.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@key&libraries=places" async defer></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        })
+    </script>
+</body>
+</html>

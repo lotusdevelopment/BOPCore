@@ -1,0 +1,34 @@
+﻿{
+  "Companies": {
+    "Lotus": {
+      "url": [
+        "http://apps.lotusodonto.com",
+        "http://testapps.lotusodonto.com",
+        "http://localhost:40118"
+      ],
+      "name": "LOTUS ODONTO",
+      "id": "",
+      "logo": "http://logos.lotusodonto.com/lotuslogo.png",
+      "favicon": "http://logos.lotusodonto.com/smilefavicon.png"
+    },
+    "PRODENTAL": {
+      "url": [
+        "http://apps.lotusodonto.com"
+      ],
+      "name": "PRODENTAL PLAN",
+      "id": "",
+      "logo": "http://logos.lotusodonto.com/ProDentalPlus-1123396759LogoMini.png",
+      "favicon": "http://www.smilego.com/"
+    },
+    "SOLUSIVAS": {
+      "url": [
+        "http://ventas.solusivas.com",
+        "http://demoventas.solusivas.com"
+      ],
+      "name": "SOLUSIVAS",
+      "id": "",
+      "logo": "http://logos.lotusodonto.com/lotuslogo.png",
+      "favicon": "http://logos.lotusodonto.com/smilefavicon.png"
+    }
+  }
+}

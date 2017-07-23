@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Create Product";
+}
+
+<div class="col-md-12">
+    <div class="card-box">
+        <p class="text-muted m-b-30 font-13">Select the treatments for the product creation.</p>
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" id="Naming" placeholder="Plan Name" required="" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12" id="setAll">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Create Product" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        $(function () {
+            var tArr = [], pArr = [];
+            $("form").on("submit", function (e) {
+                e.preventDefault();
+                if ($(".ms-selection").find("ul").find(".ms-selected").length < 1) {
+                    alert("Select at least one treatment");
+                    return;
+                }
+                $.each($(".ms-selection").find("ul").find(".ms-selected"), function (i, j) {
+                    var val = j.textContent;
+                    var id = $('#Treatments option').filter(function () { return $(this).html() == val; }).val();
+                    tArr.push(id);
+                    var vale = false;
+                    var text = "";
+                    while (!vale) {
+                        text = prompt("Coverage of: " + val, "Insert the coverage as a number between 0 and 100");
+                        vale = $.isNumeric(text);
+                        if (vale)
+                            if (parseFloat(text) < 0 || parseFloat(text) > 100)
+                                vale = false;
+                    }
+                    pArr.push(text.replace(",", "."));
+                });
+                var t = "", p = "";
+                $.each(tArr, function (i, j) { t += j + '-'; });
+                $.each(pArr, function (i, j) { p += j + '-'; });
+                $.ajax({
+                    url: "/AppsAdmin/CreateProduct",
+                    data: { name: $("#Naming").val(), treat: t, per: p, q: tArr.length },
+                    success: function (data) {
+                        alert("Proccess submitted.");
+                        location.href = "/";
+                    },
+                    error: function (xhr) {
+                        console.log(JSON.stringify(xhr));
+                        alert("Opss!, we had a problem, please try again.");
+                    },
+                    dataType: "json",
+                    async: true,
+                    type: "POST"
+                });
+            });
+            getTreatments();
+        });
+        function getTreatments() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetTreatments",
+                success: function (data) {
+                    $("#setAll").html('<select multiple="multiple" class="multi-select" id="Treatments" name="Treatments[]" data-plugin="multiselect" style="position: absolute; left: -9999px;"></select>');
+                    $.each(data, function (i, j) {
+                        $('#Treatments').append('<option value="' + j.TreatId + '">' + j.TreatCode + ' - ' + j.TreatDescription + '</option>');
+                    });
+                    $('#Treatments').multiSelect({
+                        selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
+                        selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
+                        afterInit: function (ms) {
+                            var that = this,
+                                $selectableSearch = that.$selectableUl.prev(),
+                                $selectionSearch = that.$selectionUl.prev(),
+                                selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                                selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+                            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                                .on('keydown', function (e) {
+                                    if (e.which === 40) {
+                                        that.$selectableUl.focus();
+                                        return false;
+                                    }
+                                });
+
+                            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                                .on('keydown', function (e) {
+                                    if (e.which == 40) {
+                                        that.$selectionUl.focus();
+                                        return false;
+                                    }
+                                });
+                        },
+                        afterSelect: function () {
+                            this.qs1.cache();
+                            this.qs2.cache();
+                        },
+                        afterDeselect: function () {
+                            this.qs1.cache();
+                            this.qs2.cache();
+                        }
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+    })();
+</script>

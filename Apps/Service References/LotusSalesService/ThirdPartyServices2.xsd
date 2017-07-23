@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ViewModels.General" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ViewModels.General" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ClientCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardAddressCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardAddressCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardAddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardAddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardAddressZip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardCvc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardExpirationMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardExpirationYear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientCard" nillable="true" type="tns:ClientCard" />
+  <xs:complexType name="ArrayOfBeneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Beneficiary" nillable="true" type="tns:Beneficiary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBeneficiary" nillable="true" type="tns:ArrayOfBeneficiary" />
+  <xs:complexType name="Beneficiary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mother" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parent" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Beneficiary" nillable="true" type="tns:Beneficiary" />
+  <xs:complexType name="ArrayOfCountries">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Countries" nillable="true" type="tns:Countries" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCountries" nillable="true" type="tns:ArrayOfCountries" />
+  <xs:complexType name="Countries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Countries" nillable="true" type="tns:Countries" />
+  <xs:complexType name="ArrayOfPlans">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plans" nillable="true" type="tns:Plans" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlans" nillable="true" type="tns:ArrayOfPlans" />
+  <xs:complexType name="Plans">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanId" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plans" nillable="true" type="tns:Plans" />
+  <xs:complexType name="ArrayOfPlanInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanInfo" nillable="true" type="tns:PlanInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanInfo" nillable="true" type="tns:ArrayOfPlanInfo" />
+  <xs:complexType name="PlanInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanDetails" nillable="true" type="tns:PlanDetails" />
+      <xs:element minOccurs="0" name="SerialId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanInfo" nillable="true" type="tns:PlanInfo" />
+  <xs:complexType name="PlanDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FinishDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanPrice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Plandescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanDetails" nillable="true" type="tns:PlanDetails" />
+</xs:schema>

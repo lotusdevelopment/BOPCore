@@ -1,0 +1,122 @@
+﻿<div class="col-md-12">
+    <div class="card-box">
+        <p class="text-muted m-b-30 font-13 trnlstxt">click on the highlights to navigate back.</p>
+        <div class="row">
+            <div class="col-md-12" id="user-process" style="margin-bottom:1pc;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="uNcreation">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 user-creative" id="uCreation">
+                <div class="card-box">
+                    <p class="text-muted m-b-30 font-13 trnlstxt">Fill the form to create the users.</p>
+                    <div class="row" id="grouped">
+                        <span class="text-muted trnlstxt">Select the group for the users.</span>
+                        <div class="col-md-12">
+                            <select id="sGroups" class="form-control" required="">
+                                <option selected="" disabled="" class=" trnlstxt">Select a Group</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" id="uCreation">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Name" class="form-control" placeholder="Name" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="LastName" class="form-control" placeholder="LastName" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="userId" class="form-control" placeholder="Id" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="tel" id="CPhn" class="form-control" placeholder="CellPhone" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="email" id="example-email" class="form-control" placeholder="Email" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="display:none !important;">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Bdth" class="form-control datepicker" placeholder="Birthday">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Genre" class="form-control" placeholder="Genre">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Addr" class="form-control" placeholder="Address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="roles" required="">
+                                                    <option disabled="" selected="">Select the role</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="languages" required="">
+                                                    <option disabled="" selected="">Select the language</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="Countries" required="">
+                                                    <option disabled="" selected="">Select the Nationality</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Create User" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" />
+                                <input type="hidden" id="CardTitular" value="">
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

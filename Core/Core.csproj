@@ -272,6 +272,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Encrypt\Encrypt.csproj">
+      <Project>{3dca64ae-6a45-434d-b690-555d60ec2e0d}</Project>
+      <Name>Encrypt</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{a9feeed2-9bdf-412c-b358-6b5b35de4360}</Project>
       <Name>ViewModels</Name>

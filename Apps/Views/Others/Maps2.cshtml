@@ -1,0 +1,69 @@
+﻿@using System.Configuration;
+@{
+    Layout = null;
+    var key = ConfigurationManager.AppSettings["GoogleApiKey"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalable=no" />
+    <title>Maps</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link href="~/Content/MapsStyles.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+        $(document).ready(function () {
+            localStorage.clear();
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+        $(document).keydown(function (e) {
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+                return true;
+            if (e.which === 123)
+                return false;
+        });
+    </script>
+</head>
+<body>
+    <div class="col-md-6 headerSearch">
+        <label for="Busqueda" class="lblBus lblHHg"></label>
+        <input type="text" value="" id="Busqueda" placeholder="" />
+    </div>
+    <div class="col-md-6 distanceSearch">
+        <label class="lblDistance">Seleccione la distancia</label>
+        <select id="MapDistance" class="sltDistance">
+            <option value="0" selected="selected">20 KM</option>
+            <option value="1">1 KM</option>
+            <option value="3">3 KM</option>
+            <option value="5">5 KM</option>
+            <option value="10">10 KM</option>
+            <option value="20">15 KM</option>
+        </select>
+    </div>
+    <div id="EspecialidadesFill" class="col-md-12">
+    </div>
+    <div id="CountryInfo" class="col-md-12">
+    </div>
+    <div class="col-md-4">
+        <label class="sucgenTitle"></label>
+        <span class="spnSucsError">Lo sentimos, no encontramos sucursales que concuerden con su búsqueda.</span>
+        <div id="Sucursales" class="col-md-12">
+        </div>
+    </div>
+    <div id="map" class="col-md-8"></div>
+    <footer>
+        <h4>Desarrollado por Lotus Odonto &copy; @DateTime.Now.Year . Todos los derechos reservados.</h4>
+    </footer>
+    <script src="~/Scripts/vendor/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/OwnJs.js"></script>
+    <script src="~/Scripts/MapsScripts.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@key&libraries=places&callback=initMapDa" async defer></script>
+</body>
+</html>

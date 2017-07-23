@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ThirdPartyServices" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ViewModels" />
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ViewModels.General" />
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/ViewModels.Request" />
+      <xsd:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ViewModels.Response" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IThirdPartyServices_SaleProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcess" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_SaleProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_SaleProcessBeneficiaries_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcessBeneficiaries" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_SaleProcessBeneficiaries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcessBeneficiariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_SaleProcessCardPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcessCardPayment" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_SaleProcessCardPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleProcessCardPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_GetCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountries" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_GetCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_GetPlans_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlans" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_GetPlans_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlansResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_PlansRequestByCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlansRequestByCountry" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_PlansRequestByCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlansRequestByCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_Encrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:Encrypt" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_Encrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EncryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_Decrypt_InputMessage">
+    <wsdl:part name="parameters" element="tns:Decrypt" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_Decrypt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_CheckCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_CheckCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_CheckSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSale" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_CheckSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_FilteredSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:FilteredSites" />
+  </wsdl:message>
+  <wsdl:message name="IThirdPartyServices_FilteredSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FilteredSitesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IThirdPartyServices">
+    <wsdl:operation name="SaleProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcess" message="tns:IThirdPartyServices_SaleProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcessResponse" message="tns:IThirdPartyServices_SaleProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleProcessBeneficiaries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcessBeneficiaries" message="tns:IThirdPartyServices_SaleProcessBeneficiaries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcessBeneficiariesResponse" message="tns:IThirdPartyServices_SaleProcessBeneficiaries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleProcessCardPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcessCardPayment" message="tns:IThirdPartyServices_SaleProcessCardPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/SaleProcessCardPaymentResponse" message="tns:IThirdPartyServices_SaleProcessCardPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/GetCountries" message="tns:IThirdPartyServices_GetCountries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/GetCountriesResponse" message="tns:IThirdPartyServices_GetCountries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/GetPlans" message="tns:IThirdPartyServices_GetPlans_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/GetPlansResponse" message="tns:IThirdPartyServices_GetPlans_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlansRequestByCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/PlansRequestByCountry" message="tns:IThirdPartyServices_PlansRequestByCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/PlansRequestByCountryResponse" message="tns:IThirdPartyServices_PlansRequestByCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/Encrypt" message="tns:IThirdPartyServices_Encrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/EncryptResponse" message="tns:IThirdPartyServices_Encrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Decrypt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/Decrypt" message="tns:IThirdPartyServices_Decrypt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/DecryptResponse" message="tns:IThirdPartyServices_Decrypt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/CheckCustomer" message="tns:IThirdPartyServices_CheckCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/CheckCustomerResponse" message="tns:IThirdPartyServices_CheckCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/CheckSale" message="tns:IThirdPartyServices_CheckSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/CheckSaleResponse" message="tns:IThirdPartyServices_CheckSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FilteredSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IThirdPartyServices/FilteredSites" message="tns:IThirdPartyServices_FilteredSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IThirdPartyServices/FilteredSitesResponse" message="tns:IThirdPartyServices_FilteredSites_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IThirdPartyServices" type="tns:IThirdPartyServices">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaleProcess">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/SaleProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleProcessBeneficiaries">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/SaleProcessBeneficiaries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleProcessCardPayment">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/SaleProcessCardPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountries">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/GetCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlans">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/GetPlans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlansRequestByCountry">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/PlansRequestByCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/Encrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Decrypt">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/Decrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCustomer">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/CheckCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSale">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/CheckSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilteredSites">
+      <soap:operation soapAction="http://tempuri.org/IThirdPartyServices/FilteredSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ThirdPartyServices">
+    <wsdl:port name="BasicHttpBinding_IThirdPartyServices" binding="tns:BasicHttpBinding_IThirdPartyServices">
+      <soap:address location="http://testbus.lotusodonto.com/ThirdPartyServices.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

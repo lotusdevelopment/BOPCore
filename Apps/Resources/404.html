@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>404 Page Not Found</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="icon" href="../favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link href="../Content/vendor/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        html, body {
+            height: 100%;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .panel-default {
+            background: transparent !important;
+        }
+
+            .panel-default > .panel-heading {
+                color: #141d1f !important;
+                color: rgba(20,29,31,.9) !important;
+                background-color: transparent !important;
+            }
+
+        h1, h2, h3, h4, h5 {
+            color: #141d1f !important;
+            color: rgba(20,29,31,.9) !important;
+        }
+
+        .descp {
+            text-align: center;
+            display: block;
+            width: 100%;
+            font-size: 1em;
+        }
+    </style>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+        $(document).ready(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+        $(document).keydown(function (e) {
+            /*if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+                return true;
+            if (e.which === 123)
+                return false;*/
+        });
+    </script>
+</head>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="" contextmenu="return false;">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 centered-div">
+                    <div class="panel panel-default b-a-2 no-bg b-gray-dark">
+                        <div class="panel-heading text-center">
+                            <h2 class="text-center f-w-300 m-b-0"> 404 Page Not Found</h2>
+                        </div>
+                        <div class="panel-body">
+                            <img src="../Content/Images/lotuslogo.png" style=" display: block;width: 100%;margin: 0 auto;" />
+                            <span class="descp">
+                                <strong>Ops!</strong> It looks like the resource your looking for is not available. You'll be redirect in 5 seconds...
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-gray-light text-center">
+                        <strong class="m-r-1">Lotus Odonto. </strong>
+                        <span class="text-gray-dark">
+                            &#xA9;
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var setTimer = function () {
+                window.setTimeout(function () {
+                    window.location.href = "/";
+                }, 5000);
+            }
+            var positioning = function () {
+                $('.centered-div').css({
+                    'position': 'absolute',
+                    'left': '50%',
+                    'top': '50%',
+                    'margin-left': -$('.centered-div').width() / 2,
+                    'margin-top': -$('.centered-div').height() / 2
+                });
+            };
+            $(function () {
+                setTimer();
+                positioning();
+                $(window).resize(function () {
+                    positioning();
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

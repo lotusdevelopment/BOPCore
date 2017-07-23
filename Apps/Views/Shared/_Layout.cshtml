@@ -1,17 +1,99 @@
-﻿@using System.Threading
+﻿@using System.Web.Mvc.Html
+@using System.Threading
+@using System.Web.Configuration
+@using Apps.App_Start
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@Thread.CurrentThread.CurrentCulture">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Apps</title>
-    <base href="/" />
-    <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    @{
+        if (SessionConfig.User == null)
+        {
+            Response.Redirect("~/Account/Login");
+            return;
+        }
+        if (!SessionConfig.CheckAccess())
+        {
+            Response.Redirect("~/Platform/Home");
+            return;
+        }
+        if (!SessionConfig.User.PasswordChanged)
+        {
+            Response.Redirect("~/Account/NewUser");
+            return;
+        }
+        var company = SessionConfig.Allow();
+        if (company == null)
+        {
+            Response.Redirect("~/Account/Login");
+            return;
+        }
+        var gApiKey = string.Concat("https://maps.googleapis.com/maps/api/js?key=", WebConfigurationManager.AppSettings["GoogleApiKey"], "&libraries=places");
+    }
+    <title>@ViewBag.Title - @company.name</title>
+    <meta name="description" content="@company.description">
+    <meta name="author" content="Omar Ricardo Moreno Cubides / Lotus Ondonto S.A.S">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="@company.favicon">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <style>
+        #Topper-Title {
+            margin-top: 4pc;
+        }
+    </style>
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+        $(document).ready(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+        $(document).keydown(function (e) {
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+                return true;
+            if (e.which === 123)
+                return false;
+        });
+    </script>
+    <script src="@gApiKey" async defer></script>
 </head>
-<body>
-    @RenderBody()
-
-    @RenderSection("scripts", required: false)
+<body class="fixed-left widescreen" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="" contextmenu="return false;">
+    <div id="wrapper" class="">
+        @Html.Partial("_Header", company)
+        @*This is the set of the top of the central content*@
+        <div class="content-page">
+            <div class="content">
+                <div class="container">
+                    <div class="row" id="Topper-Title">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">@ViewBag.Title</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <footer class="footer text-right">
+                @DateTime.Now.Year &copy; <span class="branding-changing">Lotus Odonto.</span>
+            </footer>
+        </div>
+    </div>
+    <script>
+        var resizefunc = [];
+    </script>
+    @Scripts.Render("~/bundles/LotusScripts")
+    @Html.Partial("_Modals")
+    @*Translation Script*@
+    <script src="@Url.Content("~/Scripts/Translation.js")"></script>
 </body>
 </html>

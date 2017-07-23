@@ -1,0 +1,30 @@
+﻿@model LotusViewModels.ILotusAssistance.Empresas
+
+@*This is the set of the top of the page*@
+<div class="topbar">
+    <div class="topbar-left">
+        <div class="text-center">
+            <a href="@Url.Action("Home", "Platform")" class="logo">
+                <img alt="Logo" class="imgLogoHeader branding-img-changing" src="@Model.logo">
+            </a>
+        </div>
+    </div>
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="">
+                <div class="pull-left">
+                    <button class="button-menu-mobile open-left waves-effect">
+                        <i class="md md-menu"></i>
+                    </button>
+                    <span class="clearfix"></span>
+                </div>
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    @Html.Partial("_Notifications")
+                    @Html.Partial("_AppSettings")
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@*This is the set of the top of the menu*@
+@Html.Partial("_Menu")

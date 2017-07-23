@@ -1,0 +1,84 @@
+﻿@using System.Threading
+@using System.Web.Configuration
+@using Apps.App_Start
+@{
+    Layout = null;
+    ViewBag.Title = "Change Password";
+}
+
+<!DOCTYPE html>
+
+<html lang="@Thread.CurrentThread.CurrentCulture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    @{
+        if (SessionConfig.User == null)
+        {
+            Response.Redirect("~/Account/Login");
+            return;
+        }
+        var company = SessionConfig.Allow();
+    }
+    <title>@ViewBag.Title - @company.name</title>
+    <meta name="description" content="@company.description">
+    <meta name="author" content="Omar Ricardo Moreno Cubides / Lotus Ondonto S.A.S">
+    <link rel="shortcut icon" href="@company.favicon">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <style>
+        #Topper-Title {
+            margin-top: 4pc;
+        }
+    </style>
+    <script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+        $(document).ready(function () {
+            $(this).bind("contextmenu", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+        $(document).keydown(function (e) {
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+                return true;
+            if (e.which === 123)
+                return false;
+        });
+    </script>
+</head>
+<body class="fixed-left widescreen" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="" contextmenu="return false;">
+    <div id="wrapper" class="">
+        @Html.Partial("_Header", company)
+        @*This is the set of the top of the central content*@
+        <div class="content-page">
+            <div class="content">
+                <div class="container">
+                    <div class="row" id="Topper-Title">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">@ViewBag.Title</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("~/Views/Reusable/_ChangePassword.cshtml")
+                    </div>
+                </div>
+                <footer class="footer text-right">
+                    @DateTime.Now.Year &copy; Lotus Odonto.
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script>
+        var resizefunc = [];
+    </script>
+    @Scripts.Render("~/bundles/LotusScripts")
+    @Html.Partial("_Modals")
+</body>
+</html>

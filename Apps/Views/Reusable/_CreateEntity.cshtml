@@ -1,0 +1,401 @@
+﻿@model int
+@*This switch set the graphication of the forms
+    Values:
+    1. For superheroes: can do anything
+    2. For sales admin: can create for it's company any client and reseller and entity
+*@
+@{
+    switch (Model)
+    {
+        case 1:
+            <div class="col-md-12">
+                <div class="card-box">
+                    <p class="text-muted m-b-30 font-13">Fill the form to create the entity.</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Name" class="form-control" placeholder="Name" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="NIT" class="form-control" placeholder="Entity Id" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <textarea id="Desc" class="form-control" placeholder="Description" required=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select id="countries" class="form-control" required="">
+                                                    <option disabled="">Select the country</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select id="Etype" class="form-control" required="">
+                                                    <option disabled="">Select the entity type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-muted m-b-30 font-13">Fill the form to create the main user.</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="uName" class="form-control" placeholder="Name" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="LastName" class="form-control" placeholder="LastName" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="userId" class="form-control" placeholder="Id" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="tel" id="CPhn" class="form-control" placeholder="CellPhone" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="email" id="example-email" class="form-control" placeholder="Email" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="roles" required="">
+                                                    <option disabled="" selected="">Select the role</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="languages" required="">
+                                                    <option disabled="" selected="">Select the language</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="Countries" required="">
+                                                    <option disabled="" selected="">Select the Nationality</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Create Entity" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            break;
+        case 2:
+            <div class="col-md-12">
+                <div class="card-box">
+                    <p class="text-muted m-b-30 font-13">Fill the form to create the entity.</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="Name" class="form-control" placeholder="Name" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="NIT" class="form-control" placeholder="Entity Id" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <textarea id="Desc" class="form-control" placeholder="Description" required=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select id="countries" class="form-control" required="">
+                                                    <option disabled="">Select the country</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select id="Etype" class="form-control" required="">
+                                                    <option disabled="">Select the entity type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-muted m-b-30 font-13">Fill the form to create the main user.</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="uName" class="form-control" placeholder="Name" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="LastName" class="form-control" placeholder="LastName" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="text" id="userId" class="form-control" placeholder="Id" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="tel" id="CPhn" class="form-control" placeholder="CellPhone" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="email" id="example-email" class="form-control" placeholder="Email" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="roles" required="">
+                                                    <option disabled="" selected="">Select the role</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="languages" required="">
+                                                    <option disabled="" selected="">Select the language</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <select class="form-control" id="Countries" required="">
+                                                    <option disabled="" selected="">Select the Nationality</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Create Entity" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            break;
+    }
+}
+
+<script>
+    (function() {
+        $(function() {
+            $("form").on("submit",
+                function(e) {
+                    e.preventDefault();
+                    var flag = 1,
+                        name = $("#Name").val(),
+                        nit = $("#NIT").val(),
+                        lat = 0,
+                        long = 0,
+                        entType = $("#Etype").val(),
+                        neig = 1,
+                        country = $("#countries").val(),
+                        father = 0,
+                        status=1,
+                        desc = $("#Desc").val();
+                    if (@Model === 2) {
+                        flag = 1;
+                        father = parseInt($lf.ss.us.Company.id);
+                    }
+                    var createEntity = {
+                        Flag:flag,
+                        Name:name,
+                        Nit:nit,
+                        Latitud:lat,
+                        Longitud:long,
+                        EntityType:parseInt(entType),
+                        Neig:neig,
+                        Country:parseInt(country),
+                        Status:status,
+                        FatherId:father,
+                        Description:desc,
+                        User: {
+                            Name:$("#uName").val(),
+                            UserLastname:$("#LastName").val(),
+                            UserIcard:$("#userId").val(),
+                            CellPhone:$("#CPhn").val(),
+                            UserEmail:$("#example-email").val(),
+                            RoleId:parseInt($("#roles").val()),
+                            LanguageId:parseInt($("#languages").val()),
+                            CountryId:parseInt($("#Countries").val()),
+                            Flag:2,
+                            UserIcardtitular: 0,
+                            Country: $("#Countries option:selected").text()
+                        }
+                    };
+                    var jsonObj = JSON.stringify(createEntity);
+                    var dataToSend = '{"createEntity":'+jsonObj+'}';
+                    $.ajax({
+                        type:"POST",
+                        url: "/Platform/CreateEntity",
+                        data:dataToSend,
+                        success: function() {
+                            alert("The process has been submited.");
+                            location.href = "/";
+                        },
+                        error: function(xhr) {
+                            console.log(JSON.stringify(xhr));
+                            alert("An error ocurred, please try again.");
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        async: true
+                    });
+                });
+            fillCountries();
+            fillTypes();
+            fillRoles();
+            fillLanguages();
+        });
+        function fillRoles() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetRoles",
+                success: function (data) {
+                    var cr = $lf.ss.us.Roles[0].RoleLevel;
+                    var ndata = [];
+                    $.each(data, function (i, j) {
+                        if (j.RoleLevel >= cr)
+                            ndata.push(j);
+                    });
+                    $.each(ndata, function (i, j) {
+                        if(j.Role==="SALES_ADMIN")
+                            $('#roles').append('<option value="' + j.RoleId + '">' + j.Role + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+        function fillLanguages() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetLanguages",
+                success: function (data) {
+                    $.each(data, function (i, j) {
+                        $('#languages').append('<option value="' + j.LanguageId + '">' + j.LanguageDescription + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+        function fillCountries() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetCountriesAlone",
+                success: function (data) {
+                    $.each(data, function (i, j) {
+                        $('#Countries').append('<option value="' + j.CountryId + '">' + j.Country + '</option>');
+                        $('#countries').append('<option value="' + j.CountryId + '">' + j.Country + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+        function fillTypes() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetEntityTypes",
+                success: function(data) {
+                    $.each(data,
+                        function(i, j) {
+                            if (@Convert.ToInt32(Model) === 2){
+                                if (j.EntypeDescription==="SALES FORCE")
+                                    $('#Etype').append('<option value="' + j.EntypeId + '">' + j.EntypeDescription + '</option>');
+                            }
+                            else
+                                $('#Etype').append('<option value="' + j.EntypeId + '">' + j.EntypeDescription + '</option>');
+                        });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+    })()
+</script>

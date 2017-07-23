@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ViewModels.Response" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ViewModels.Response" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ViewModels.General" />
+  <xs:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ViewModels" />
+  <xs:complexType name="CountryResponse">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ViewModels.General" minOccurs="0" name="Countries" nillable="true" type="q1:ArrayOfCountries" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Error" nillable="true" type="q2:GenericError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CountryResponse" nillable="true" type="tns:CountryResponse" />
+  <xs:complexType name="PlansResponse">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Error" nillable="true" type="q3:GenericError" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ViewModels.General" minOccurs="0" name="Plans" nillable="true" type="q4:ArrayOfPlans" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlansResponse" nillable="true" type="tns:PlansResponse" />
+  <xs:complexType name="UserResponse">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Error" nillable="true" type="q5:GenericError" />
+      <xs:element minOccurs="0" name="UserExists" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserResponse" nillable="true" type="tns:UserResponse" />
+  <xs:complexType name="SaleMade">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Error" nillable="true" type="q6:GenericError" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ViewModels.General" minOccurs="0" name="PlanInfo" nillable="true" type="q7:ArrayOfPlanInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SaleMade" nillable="true" type="tns:SaleMade" />
+  <xs:complexType name="BranchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Branches" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Error" nillable="true" type="q8:GenericError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BranchResponse" nillable="true" type="tns:BranchResponse" />
+</xs:schema>

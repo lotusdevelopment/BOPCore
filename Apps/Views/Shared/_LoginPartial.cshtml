@@ -1,0 +1,20 @@
+﻿<li><a href="#" id="LogOut" class="trnlstxt"><i class="md md-settings-power"></i> Logout</a></li>
+<script>
+    (function () {
+        $(function () {
+            $("#LogOut").click(function () {
+                $.post("/Account/LogOff", function (data) {
+                    if (data) {
+                        //localStorage.clear();
+                        localStorage.removeItem("sessions");
+                        window.location.href = "/";
+                    } else {
+                        console.log($lf.parseObject(data));
+                        alert("Error: We can't log out you now, please try again.");
+                        location.reload();
+                    }
+                });
+            });
+        });
+    })();
+</script>

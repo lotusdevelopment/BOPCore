@@ -1,0 +1,243 @@
+﻿@using Apps.Controllers
+@{
+    ViewBag.title = new PlatformController().GetTitle("New Sale");
+}
+<link href="~/Content/Site.css" rel="stylesheet" />
+<style>
+    .atr1, .atr2, .atr3, .atr1 a, .atr2 a, .atr3 a {
+        cursor: not-allowed;
+    }
+
+    .row {
+        margin-bottom: 1pc;
+    }
+
+    .right-mandatory {
+        float: right;
+        margin: 0 auto;
+        width: 38.5%;
+        padding-right: 5pc;
+    }
+
+    #EM, #EY, #CV {
+        width: 12pc;
+    }
+</style>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<div class="container">
+    <div id="progressbarwizard" class="pull-in row">
+        <div id="bar" class="progress progress-bar-striped active" style="margin-top:-40px;margin-left:-10px;">
+            <div class="bar progress-bar progress-bar-success" style="width: 33.4%;"></div>
+        </div>
+        <ul class="steps-former nav nav-tabs custom-tabs nav-justified" style="width: 100%;">
+            <li class="atr1 active tabs col-lg-4"><a href="#Stp1" data-toggle="tab" aria-expanded="true" class="trnlstxt" ><span class="glyphicon glyphicon-thumbs-up"></span> Select the Product </a></li>
+            <li class="atr2 tabs col-lg-4"><a href="#Stp2" data-toggle="tab" aria-expanded="true" class="trnlstxt" ><span class="glyphicon glyphicon-user"></span> Beneficiary Information </a></li>
+            <li class="atr3 tabs col-lg-4"><a href="#Stp3" data-toggle="tab" aria-expanded="true" class="trnlstxt" > <span class="glyphicon glyphicon-credit-card"></span> Payment</a></li>
+        </ul>
+        <div id="SaleForm" class="tab-content bx-s-0 m-b-0" style="border:1px dotted #c2c2c2">
+            <div id="Stp1" class="tab-pane p-t-10 fade active in">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-md-6">
+                            <h5 class="trnlstxt title">Select the currency</h5>
+                            <select id="sltCurrencie" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="trnlstxt title">Select the payment period</h5>
+                            <select id="sltPPeriod" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="trnlstxt title">Select the validity time</h5>
+                            <select id="sltVTime" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="trnlstxt title">Select the plan type</h5>
+                            <select id="sltPType" class="form-control"></select>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" id="btnGetProducts" class="btn btn-custom btn-warning waves-effect w-md waves-light m-b-5 trnlstxt ">
+                                Get Products <span class="glyphicon glyphicon-gift"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-lg-12 products-container" style="text-align:center;color:darkred">
+                        <div class="col-md-12" id="ProductsList"></div>
+                    </div>
+                    <div class="col-lg-7 push-l4">
+                        <button type="submit" id="btnStep1" class="btn btn-success btn-block btn-custom waves-effect w-md waves-light m-b-5 trnlstxt">
+                            Next <span class="glyphicon glyphicon-forward"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="Stp2" class="tab-pane p-t-10 fade">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <h5 style="text-align:center;color:darkolivegreen" class="trnlstxt">
+                            Enter the data of the person who will use the plan, the fields with<span style="color:red"> (*) </span>are mandatory <br />
+                        </h5><hr />
+                        <div class="form-group col-md-6">
+                            <label for="Name" class="col-lg-4 control-label trnlstxt">Name <span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="Name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="LastName" class="col-lg-4 control-label trnlstxt">Lastname <span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="LastName" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cId" class="col-lg-4 control-label trnlstxt">Id</label>
+                            <div class="col-lg-8">
+                                <input id="cId" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Mobile" class="col-lg-4 control-label trnlstxt">Mobile Phone <span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="Mobile" type="tel" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Email" class="col-lg-4 control-label trnlstxt">Email <span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="Email" type="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Address" class="col-lg-4 control-label trnlstxt">Address</label>
+                            <div class="col-lg-8">
+                                <input id="Address" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Birthday" class="col-lg-4 control-label trnlstxt">Birthday</label>
+                            <div class="col-lg-8">
+                                <input id="Birthday" type="text" class="form-control datepicker" placeholder="mm/dd/yyyy">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 right-mandatory">
+                            <select id="Same" class="form-control">
+                                <option value="" disabled selected>Are the buyer and the beneficiary the same? <span style="color:red"> (*) </span></option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12" id="Fillbens">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label onclick="BenScreen();return true;" class="incld"></label>
+                        </div>
+                        <div class="col-md-11">
+                            <button type="submit" id="btnStep2" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5 trnlstxt">Next <span class="glyphicon glyphicon-forward"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Stp3" class="tab-pane p-t-10 fade">
+                <div class="row">
+                    <div class="form-horizontal">
+                        <h5 style="color:darkolivegreen;text-align:center" class="trnlstxt" >
+                            Now, fill the following information, the fields with<span style="color:red"> (*) </span>are mandatory
+                        </h5>
+                        <hr />
+                        <div class="form-group col-md-6">
+                            <label for="BuyerName" class="col-lg-4 control-label trnlstxt">Buyer Name <span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="BuyerName" type="text" class="form-control validCarda">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="BuyerPhone" class="col-lg-4 control-label lblBBna trnlstxt">Buyer Phone</label>
+                            <div class="col-lg-8">
+                                <input id="BuyerPhone" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="BuyerMail" class="col-lg-4 control-label lblBB trnlstxt">Buyer Email<span style="color:red"> (*) </span></label>
+                            <div class="col-lg-8">
+                                <input id="BuyerMail" type="text" class="form-control validCarda validCardan">
+                            </div>
+                        </div>
+                        <div class="col-md-12 buy-review" style="background-color:#ebfeff;border:1px dotted #c2c2c2;">
+                        </div>
+                        <div class="col-md-12" id="fillPmnt">
+                            <center>
+                                <div class="form-group col-lg-6 pmntO">
+                                </div>
+                                <div class="form-group col-lg-6 pmntI">
+                                </div>
+                            </center>
+                        </div>
+                        <div class="row col-lg-12">
+                            <center>
+                                <div class="col-md-3 push-l2">
+                                    <button (click)="cancelarCompra();" type="submit" id="btnStep4" class="btn btn-danger btn-block btn-custom waves-effect w-md waves-light m-b-5  trnlstxt"><span id="primary-alert">Cancel <span class="glyphicon glyphicon-eject"></span></span></button>
+                                </div>
+                                <div class="col-md-3 push-l2">
+                                    <button type="submit" id="btnStep3" class="btn btn-success btn-block btn-custom waves-effect w-md waves-light m-b-5  trnlstxt">Buy <span class="glyphicon glyphicon-credit-card"></span></button>
+                                </div>
+                            </center>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#basicwizard').bootstrapWizard({ 'tabClass': 'nav nav-tabs navtab-custom nav-justified bg-muted' });
+        $('#progressbarwizard').bootstrapWizard({
+            onTabShow: function (tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index + 1;
+                var $percent = ($current / $total) * 100;
+                $('#progressbarwizard').find('.bar').css({ width: $percent + '%' });
+            },
+            'tabClass': 'nav nav-tabs navtab-custom nav-justified bg-muted'
+        });
+        $('#btnwizard').bootstrapWizard({ 'tabClass': 'nav nav-tabs navtab-custom nav-justified bg-muted', 'nextSelector': '.button-next', 'previousSelector': '.button-previous', 'firstSelector': '.button-first', 'lastSelector': '.button-last' });
+        var $validator = $("#commentForm").validate({
+            rules: {
+                emailfield: {
+                    required: true,
+                    email: true,
+                    minlength: 3
+                },
+                namefield: {
+                    required: true,
+                    minlength: 3
+                },
+                urlfield: {
+                    required: true,
+                    minlength: 3,
+                    url: true
+                }
+            }
+        });
+        $('#rootwizard').bootstrapWizard({
+            'tabClass': 'nav nav-tabs navtab-custom nav-justified bg-muted',
+            'onNext': function (tab, navigation, index) {
+                var $valid = $("#commentForm").valid();
+                if (!$valid) {
+                    $validator.focusInvalid();
+                    return false;
+                }
+            }
+        });
+        $('.atr1, .atr2, .atr3').click(function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+    });
+</script>
+
+<script type="text/javascript" src="~/Scripts/SalesScript.js"></script>

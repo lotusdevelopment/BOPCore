@@ -1,0 +1,38 @@
+﻿.invalidNew {
+    border-color: red !important;
+}
+
+.validNew {
+    border-color: green !important;
+}
+
+#parentalMenu, #NoParMenu {
+    display: none;
+}
+
+#uCreation {
+    margin-top: 1pc;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+.toggable-products, .toggable-products-gen {
+    cursor: pointer;
+}
+
+.contractsContainer {
+    /*display: none;*/
+}
+
+
+
+.inner-tab-usr-selected {
+    margin-right: 1pc;
+    cursor: pointer;
+}
+
+#datatable-uNcreation tr {
+    cursor: pointer;
+}

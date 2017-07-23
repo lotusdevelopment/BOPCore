@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Comissions";
+}
+
+<div class="col-md-12">
+    <div class="card-box">
+        <p class="text-muted m-b-30 font-13 trnlstxt">Select the comissions per role and per group.</p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row" id="FillingGroups">
+                </div>
+                <input type="submit" value="Update Comissions" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 uptComissions" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        $(function () {
+            fillGroups();
+            $(".uptComissions").click(function () {
+                var all = $(".contractsContainer");
+                var commits = [], percs = [];
+                $.each(all, function (i, j) {
+                    var cm = $(this).find(".commiGet");
+                    $.each(cm, function (k, l) {
+                        commits.push($(this).data("commi"));
+                        var val = $(this).find(".chnComField").val();
+                        if (IsNullOrEmptyString(val)) {
+                            val = 0;
+                        }
+                        val = val.replace(',', '.');
+                        percs.push(parseFloat(val));
+                    });
+                });
+                var sCommits = "", sPercs = "";
+                $.each(commits, function (i, j) { sCommits += j + "-"; });
+                $.each(percs, function (i, j) { sPercs += j + "-"; });
+                $.ajax({
+                    url: "/Sales/UpdateComissions",
+                    data: { commit: sCommits, percs: sPercs, q: commits.length },
+                    success: function (data) {
+                        alert("Proccess submitted.");
+                        location.href = "/";
+                    },
+                    error: function (xhr) {
+                        console.log(JSON.stringify(xhr));
+                        alert("Opss!, we had a problem, please try again.");
+                    },
+                    dataType: "json",
+                    async: true,
+                    type: "POST"
+                });
+            })
+        });
+        function fillGroups() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetGroupsEntity/" + $lf.ss.us.Company.id,
+                success: function (data) {
+                    $.each(data, function (i, j) {
+                        if (!j.Group.toUpperCase().includes("GROUP ADMIN")) {
+                            $("#FillingGroups").append('<div class="col-md-12 grpFlta" id="grp' + j.GroupId + '" data-id="' + j.GroupId + '">' +
+                                '<h4>' + j.Group + '</h4>' +
+                                '</div>');
+                        }
+                    });
+                    $.each($(".grpFlta"), function (i, j) {
+                        var dataId = $(this).data("id");
+                        $.ajax({
+                            url: $lf.ss.cs.Company + "GetAllContracts/" + dataId,
+                            success: function (data) {
+                                $.each(data, function (k, l) {
+                                    getAllGraphed(dataId, l);
+                                });
+                            },
+                            error: function (xhr) {
+                                console.log(JSON.stringify(xhr));
+                            },
+                            dataType: "json",
+                            async: false
+                        });
+                    });
+                    //var sum = GetAllSums();
+                    //$(".left-commission").html(sum + '%');
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: false
+            });
+        }
+        function getAllGraphed(g, c) {
+            var group = $("#grp" + g);
+            group.append('<div class="col-md-12" id="contr' + c.ContractId + '">' +
+                '<h4 class="toggable-products-gen">' + c.Contract + '</h4>' +
+                '</div>');
+            var contract = group.find("#contr" + c.ContractId);
+            $.each(c.ContractsSpecifications, function (m, n) {
+                contract.append('<div class="col-md-12 toggable-firsty">' +
+                    '<h4 class="toggable-products">' + n.ProductName + '</h4>' +
+                    '<div class="col-md-12 contractsContainer" id="contrProd' + n.ContractProductId + '" data-max="' + n.MaxComission + '">' +
+                    //'<h5>Comission for this product: ' + n.MaxComission + '% - Assigned Comission: <span class="left-commission"><span></h5>' +
+                    '<h5>Comission for this product: ' + n.MaxComission + '%</h5>' +
+                    '</div>' +
+                    '</div>');
+                var cprod = contract.find("#contrProd" + n.ContractProductId);
+                $.each(n.Comissions, function (o, p) {
+                    cprod.append('<div class="col-md-12 commiGet" id="grpCommi' + p.ComiId + '" data-commi="' + p.ComiId + '">'
+                        + '<div class="form-group">'
+                        + '<label class="col-md-6 control-label">' + p.Role + '</label>'
+                        + '<div class="col-md-4">'
+                        + '<input type="text" class="form-control chnComField" value="' + p.Comission + '">'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>');
+                });
+                ChangeCommision();
+            });
+            SetToggable();
+        }
+        function ChangeCommision() {
+            //$(".chnComField").keyup(function () {
+            //    var val = parseFloat($(this).val());
+            //    var father = $(this).parent().parent().parent().parent();
+            //    var max = parseFloat(father.data("max"));
+            //    var children = father.find(".commiGet");
+            //    var sum = 0;
+            //    $.each(children, function (i, j) {
+            //        $(this).removeClass("invalidNew");
+            //        var val = $(this).find(".chnComField").val();
+            //        if (IsNullOrEmptyString(val)) {
+            //            val.val(0);
+            //            val = 0;
+            //        }
+            //        val = val.replace(',', '.');
+            //        sum = sum + parseFloat(val);
+            //    });
+            //    if (sum <= max) {
+            //        //$(".left-commission").html(sum + '%');
+            //        return;
+            //    }
+            //    $(this).addClass("invalidNew");
+            //    $(this).val(0);
+            //    return;
+            //});
+            $(".chnComField").keyup(function () {
+                var val = parseFloat($(this).val());
+                var father = $(this).parent().parent().parent().parent();
+                var max = parseFloat(father.data("max"));
+                var children = father.find(".commiGet");
+                $.each(children, function (i, j) {
+                    $(this).find(".chnComField").removeClass("invalidNew");
+                    var val = $(this).find(".chnComField").val();
+                    if (IsNullOrEmptyString(val)) {
+                        val.val(0);
+                        val = 0;
+                    } val = val.replace(',', '.');
+                });
+                if (val > max) { $(this).addClass("invalidNew"); $(this).val(0); return; }
+                var selector = $(this).parent().parent().parent()[0];
+                var last = 1000;
+                $.each(children, function (i, j) {
+                    if (j.id == selector.id) {
+                        var lst = children[last];
+                        if (val >= $("#" + lst.id).find(".chnComField").val()) {
+                            var selecter = $("#" + j.id).find(".chnComField");
+                            selecter.addClass("invalidNew"); selecter.val(0); return;
+                        }
+                    } else { last = i; }
+                });
+                return;
+            });
+        }
+        function SetToggable() {
+            $(".toggable-products").click(function () {
+                $(this).parent().find(".contractsContainer").toggle();
+            });
+            $(".toggable-products-gen").click(function () {
+                $(this).parent().find(".toggable-firsty").toggle();
+            });
+        }
+        function GetAllSums() {
+            return sum;
+        }
+    })()
+</script>

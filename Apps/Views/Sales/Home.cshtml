@@ -1,0 +1,24 @@
+﻿@using Apps.Controllers
+@using Apps.App_Start
+
+<link href="@Url.Content("~/Content/vendor/plugins/nvd3/build/nv.d3.min.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/vendor/plugins/jquery-circliful/css/jquery.circliful.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/vendor/plugins/jquery-circliful/js/jquery.circliful.min.js")"></script>
+<script src="@Url.Content("~/Scripts/vendor/plugins/d3/d3.min.js")"></script>
+<script src="@Url.Content("~/Scripts/vendor/plugins/nvd3/build/nv.d3.min.js")"></script>
+
+@{
+    ViewBag.Title = new PlatformController().GetTitle("Home");
+}
+
+@{
+    switch (SessionConfig.Roles.FirstOrDefault().RoleId)
+    {
+        case 7:
+            @Html.Partial("~/Views/DashBoard/_SalesAdmin.cshtml")
+            break;
+        default:
+            @Html.Partial("~/Views/DashBoard/_Seller.cshtml")
+            break;
+    }
+}

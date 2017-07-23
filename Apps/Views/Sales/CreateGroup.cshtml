@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Create Group";
+}
+
+<div class="col-md-12">
+    <div class="card-box">
+        <p class="text-muted m-b-30 font-13">Fill the form to create the group.</p>
+        <div class="row" id="cGroups">
+            <div class="col-md-12 gForm">
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control namingF" placeholder="Group Name" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <input type="submit" value="Add Group" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" id="btnMore" />
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" value="Create Groups" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" id="btnSbt" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var contractsAll;
+        $(function () {
+            //getAllContracts();
+            $("#btnSbt").click(function () {
+                if (IsNullOrEmpty("namingF", "class"))
+                    return;
+                var frm = $(".namingF");
+                var naming = "";
+                $.each(frm, function (i, j) {
+                    naming += $(this).val() + "-";
+                });
+                sendToCreate(naming);
+            });
+            $("#btnMore").click(function () {
+                $(".gForm").first().clone().appendTo("#cGroups").find(".namingF").each(function () {
+                    $(this).val("");
+                    $(this).removeClass("invalidNew");
+                    $(this).removeClass("validNew");
+                    $(this).nextAll().remove();
+                });
+                $(".namingF").change(function () {
+                    //setAfters($(this));
+                });
+            });
+            $(".namingF").change(function () {
+                //setAfters($(this));
+            });
+        });
+        function sendToCreate(name) {
+            $.ajax({
+                type: "POST",
+                url: "/Sales/CreateGroupI",
+                data: JSON.stringify({ name: name }),
+                success: function () {
+                    alert("The process has been submited.");
+                    location.href = "/";
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                    alert("An error ocurred, please try again.");
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                async: true
+            });
+        }
+        function setAfters(f) {
+            if (f.val().length < 1)
+                f.nextAll().remove();
+            else {
+                var finder = f.parent().find(".inner-Contract");
+                if (finder.length > 0) return;
+                f.after('<div class="col-md-12 inner-Contract">Holi</div>');
+            }
+        }
+        function getAllContracts() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetAllContracts/" + $lf.ss.us.Company.id,
+                success: function (data) {
+                    contractsAll = data;
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: false
+            });
+        }
+    })()
+</script>

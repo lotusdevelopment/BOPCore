@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Create Menu";
+}
+
+<div class="col-md-12">
+    <div class="card-box">
+        <p class="text-muted m-b-30 font-13">Fill the form to create the users.</p>
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="text" id="Name" class="form-control" placeholder="Name" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select id="Apps" class="form-control" required="">
+                                        <option disabled="">Select an App</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select id="Roles" class="form-control" required="">
+                                        <option disabled="" selected="">Select a Role</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select id="Parent" class="form-control" required="">
+                                        <option disabled="" selected="">Is Parent</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="parentalMenu">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="Action" class="form-control" placeholder="Action">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="Controller" class="form-control" placeholder="Controller">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="Icon" class="form-control" placeholder="Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" id="NoParMenu">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="PID" class="form-control" placeholder="Parent Id">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="Action" class="form-control" placeholder="Action">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" id="Controller" class="form-control" placeholder="Controller">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Create Menu" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        var parental = true;
+        $(function () {
+            fillRoles();
+            fillApps();
+            $("form").on("submit", function (e) {
+                e.preventDefault();
+                var icon = null, controller, action, parentId=0;
+                var isParent = $("#Parent").val();
+                var appId = $("#Apps").val();
+                if (isParent === "1") {
+                    icon = $("#Icon").val();
+                    controller = $("#parentalMenu #Controller").val();
+                    action = $("#parentalMenu #Action").val();
+                } else {
+                    parentId = $("#PID").val();
+                    controller = $("#NoParMenu #Controller").val();
+                    action = $("#NoParMenu #Action").val();
+                }
+                var obj = {
+                    NameMenu: $("#Name").val(),
+                    AppId: parseInt(appId),
+                    RoleId: parseInt($("#Roles").val()),
+                    IsParent: parseInt(isParent),
+                    ParentId: parseInt(parentId),
+                    Action: action,
+                    Controller: controller,
+                    Icon: icon
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/AppsAdmin/SetMenu",
+                    data: { model: obj },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function (xhr) {
+                        console.log(JSON.stringify(xhr));
+                        alert("Error");
+                    },
+                    dataType: "json",
+                    async: true
+                });
+            });
+            $("#Parent").change(function () {
+                if ($(this).val() === "1") {
+                    $("#parentalMenu").show();
+                    $("#NoParMenu").hide();
+                } else {
+                    $("#NoParMenu").show();
+                    $("#parentalMenu").hide();
+                }
+            });
+        });
+        function fillRoles() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetRoles",
+                success: function (data) {
+                    $.each(data, function (i, j) {
+                        $('#Roles').append('<option value="' + j.RoleId + '">' + j.Role + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+        function fillApps() {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GetApps",
+                success: function (data) {
+                    $.each(data, function (i, j) {
+                        $('#Apps').append('<option value="' + j.AppId + '">' + j.AppName + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(JSON.stringify(xhr));
+                },
+                dataType: "json",
+                async: true
+            });
+        }
+    })()
+</script>

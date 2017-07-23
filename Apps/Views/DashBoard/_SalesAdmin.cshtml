@@ -1,0 +1,196 @@
+﻿<div class="row">
+    <div class="col-sm-6 col-lg-4">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart circliful" data-dimension="90" data-width="5" data-fontsize="16" data-percent="1" data-fgcolor="green" data-bgcolor="#B8FFC7" style="width: 90px;">
+                <span id="valdia" class="circle-text" style="line-height: 90px; font-size: 14px;"></span>
+            </div>
+            <div class="text-right">
+                <h3 id="gandia" class="text-success counter">0</h3>
+                <p class="text-muted">
+                    Sales / Revenue <br />
+                    <small style="font-size:11px;color:forestgreen;margin-top:-30px;text-align:center;margin-right:8px;">Per day</small>
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart circliful" data-dimension="90" data-width="5" data-fontsize="16" data-percent="1" data-fgcolor="blue" data-bgcolor="#B0DFFF" style="width: 90px;">
+                <span id="valsem" class="circle-text" style="line-height: 90px; font-size: 14px;"></span>
+            </div>
+            <div class="text-right">
+                <h3 id="gansem" class="text-primary counter">0</h3>
+                <p class="text-muted">
+                    Sales / Revenue <br />
+                    <small style="font-size:11px;color:dodgerblue;margin-top:-30px;text-align:center;margin-right:8px;">Per week</small>
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart circliful" data-dimension="90" data-width="5" data-fontsize="16" data-percent="1" data-fgcolor="red" data-bgcolor="pink" style="width: 90px;">
+                <span id="valmon" class="circle-text" style="line-height: 90px; font-size: 14px;"></span>
+            </div>
+            <div class="text-right">
+                <h3 id="ganmon" class="text-danger counter">0</h3>
+                <p class="text-muted">
+                    Sales / Revenue <br />
+                    <small style="font-size:11px;color:red;margin-top:-30px;text-align:center;margin-right:8px;">Per month</small>
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-box">
+            <h4 class="m-t-0 m-b-20 header-title"><b>Sales of the month by group</b></h4>
+            <div class="bar-chart">
+                <svg style="height:380px;width:100%"></svg>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card-box">
+            <h4 class="m-t-0 m-b-20 header-title"><b>Products sales of the month</b></h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="chart1">
+                        <svg style="height:380px;width:100%"></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        $('.circliful-chart').circliful();
+        var repColorsOne = [];
+        var repColorsTwo = [];
+        $(function () {
+            getVariousMetrics();
+            getGroupMetrics();
+            getProductsMetrics();
+        })
+        var getVariousMetrics = function () {
+            $.ajax({
+                url: $lf.ss.cs.Company + "SalesReport/" + $lf.ss.us.User.UserId + "/1",
+                success: function (data) {
+                    document.getElementById("valdia").innerHTML = data.SalesQuantityDay;
+                    document.getElementById("gandia").innerHTML = data.SaleValueDay;
+                    document.getElementById("valsem").innerHTML = data.SalesQuantityWeek;
+                    document.getElementById("gansem").innerHTML = data.SaleValueWeek;
+                    document.getElementById("valmon").innerHTML = data.SalesQuantityMonth;
+                    document.getElementById("ganmon").innerHTML = data.SaleValueMonth;
+                }, dataType: 'json',
+                error: function (xhr) {
+                    debugger;
+                    console.log($lf.parseObject(xhr));
+                },
+                async: false
+            });
+        }
+        var getGroupMetrics = function () {
+            $.ajax({
+                url: $lf.ss.cs.Company + "GroupMetricsReport/" + $lf.ss.us.Company.id,
+                success: function (data) {
+                    var groups = [];
+                    $.each(data, function (i, j) {
+                        groups.push({
+                            label: j.DescriptionName, value: j.Counting, color: getColor(1)
+                        })
+                    });
+                    var historicalBarChart = [{
+                        key: 'Groups Charting',
+                        values: groups
+                    }];
+                    nv.addGraph(function () {
+                        var barChart = nv.models.discreteBarChart().x(function (d) {
+                            return d.label;
+                        }).y(function (d) {
+                            return d.value;
+                        }).staggerLabels(true).tooltips(false).showValues(true).duration(250);
+                        barChart.yAxis.axisLabel('Sales Quantity');
+                        d3.select('.bar-chart svg').datum(historicalBarChart).call(barChart);
+                        nv.utils.windowResize(barChart.update);
+                        return barChart;
+                    });
+                },
+                dataType: 'json',
+                error: function (xhr) {
+                    debugger;
+                    console.log($lf.parseObject(xhr));
+                },
+                async: false
+            });
+        }
+        var getProductsMetrics = function () {
+            $.ajax({
+                url: $lf.ss.cs.Company + "ProductsMetricsReport/" + $lf.ss.us.Company.id,
+                success: function (data) {
+                    nv.addGraph(function () {
+                        var chart = nv.models.pieChart()
+                            .x(function (d) { return d.label })
+                            .y(function (d) { return d.value })
+                            .showLabels(true);
+                        d3.select("#chart1 svg")
+                            .datum(exampleData(data))
+                            .transition().duration(1200)
+                            .call(chart);
+
+                        return chart;
+                    });
+                }, dataType: 'json',
+                error: function (xhr) {
+                    //debugger;
+                    console.log($lf.parseObject(xhr));
+                },
+                async: false
+            });
+        }
+        var exampleData = function (data) {
+            var groups = [];
+            $.each(data, function (i, j) {
+                groups.push({
+                    label: j.DescriptionName, value: j.Counting, color: getColor(2)
+                })
+            });
+            return groups;
+        }
+        var getColor = function (type) {
+            switch (type) {
+                case 1:
+                    var color = generateColor();
+                    if (!repColorsOne.includes(color)) {
+                        repColorsOne.push(color);
+                        return color;
+                    }
+                    getColor(1);
+                    break;
+                case 2:
+                    var color = generateColor();
+                    if (!repColorsTwo.includes(color)) {
+                        repColorsTwo.push(color);
+                        return color;
+                    }
+                    getColor(2);
+                    break;
+            }
+        }
+        var generateColor = function () {
+            return "#" + Math.floor(Math.random() * 16777215).toString(16);
+            //var colorsDictionary = ['#039cfd', '#f76397', '#52bb56', '#ffaa00', '#81c868', '#dcdcdc', '#555555	', '#fb6d9d', '#98a6ad', '#67d1f8'];
+            //var randomNumber = Math.floor(Math.random() * colorsDictionary.length) + 0;
+            //return colorsDictionary[randomNumber];
+        }
+    })()
+</script>

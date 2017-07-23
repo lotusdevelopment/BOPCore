@@ -1,0 +1,149 @@
+﻿@using Apps.Controllers
+@{
+    ViewBag.Title = new PlatformController().GetTitle("My Profile");
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12 toppad">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-3" align="center">
+                            <img alt="User Pic" src=""
+                                 class="img-circle img-responsive" id="prPict"> <br />
+                            <span id="editar" class="glyphicon glyphicon-edit"></span><br />
+                            <input id="fileupload" type="file" name="archivo" data-url="server/php/" style="display:none">
+                            <h2 id="nombreUsuario" style="line-height:1;" class="panel-title"></h2> <br />
+                        </div>
+                        <div class=" col-md-6 col-lg-8 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td><p><b class="trnlstxt">Language</b></p></td>
+                                        <td class="col-12">
+                                            <select id="idioma" class="form-control"></select>
+                                    </tr>
+                                    <tr>
+                                        <td><p><b class="trnlstxt">Address</b></p></td>
+                                        <td><input id="direccion" type="text" value="" class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p><b class="trnlstxt">Phone</b></p></td>
+                                        <td>
+                                            <input id="telefono" type="tel" value="" class="form-control" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><p><b class="trnlstxt">Email</b></p></td>
+                                        <td><input type="email" id="email" value="" disabled class="form-control" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p><b class="trnlstxt">Country</b></p></td>
+                                        <td><input id="pais" type="text" value="" disabled class="form-control" /></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div id="Save" class="btn btn-custom btn-success col-lg-push-1 col-sm-1 trnlstxt">
+                            <i class="glyphicon glyphicon-floppy-save"></i>
+                            Save
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        var usuario;
+        $(function () {
+            $.ajax({
+                url: "/Platform/GetUs",
+                success: function (data) {
+                    usuario = data.User;
+                    document.getElementById('nombreUsuario').innerHTML = data.User.UserName + " " + data.User.UserLastname;
+                    document.getElementById('email').value = data.User.UserEmail;
+                    document.getElementById('direccion').value = data.User.Address;
+                    document.getElementById('telefono').value = data.User.CellPhone;
+                    document.getElementById('pais').value = data.User.Country;
+                    $.get($lf.ss.cs.Company + "GetLanguages", function (omiwan) {
+                        $.each(omiwan, function (i, j) {
+                            $('#idioma').append('<option value="' + j.LanguageId + '">' + j.LanguageDescription + '</option>');
+                        });
+                        $("#idioma").find("option[value=" + data.User.LanguageId + "]").attr("selected", true);
+
+                    });
+                    $("#prPict").attr('src', data.User.ProfilePicture);
+                },
+                dataType: "json",
+                error: function (xhr) {
+                    console.log($lf.parseObject(xhr));
+                    alert("Error: we had a problem loading the app properties, please reload the page.");
+                },
+                async: false
+            });
+            $("#Save").click(function () {
+                usuario.Address = $("#direccion").val();
+                usuario.CellPhone = $("#telefono").val();
+                usuario.LanguageId = $("#idioma").val();
+                $.ajax({
+                    type: "POST",
+                    url: $lf.ss.cs.Account + "UpdateUser",
+                    data: $lf.parseObject(usuario),
+                    success: function (department) {
+                        swal("Log In again to view the changes");
+                    },
+                    error: function (xhr) {
+                        alert(xhr.responseText);
+                    },
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+            });
+            $('#editar').click(function () {
+                $('#editar').css('display', 'none');
+                $('#fileupload').css('display', 'block');
+            });
+            $('#fileupload').change(function () {
+                var a = $(this);
+                var splitted = $(this).val().split('.');
+                var formato = $(splitted).last()[0].toUpperCase();
+                if (formato != "PNG" && formato != "JPG" && formato != "JPEG" && formato != "GIF") {
+                    alert("El formato de la imagen es invalido!");
+                    return;
+                }
+                var data = new FormData();
+                var files = $("#fileupload").get(0).files;
+                if (files.length > 0) {
+                    data.append("ImageUpload", files[0]);
+                    $.ajax({
+                        url: "/Others/UpdateProfileImg",
+                        type: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        success: function (response) {
+                            swal("Log In again to view the changes");
+                        },
+                        error: function (er) {
+                            alert("Error uploading the image"); debugger;
+                        }
+                    });
+                }
+                else alert("Error uploading the image");
+            });
+        })
+    })()
+</script>
+<input multiple="multiple" class="dz-hidden-input" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;" type="file">

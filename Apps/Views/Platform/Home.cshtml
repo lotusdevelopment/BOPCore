@@ -1,0 +1,52 @@
+﻿@using Apps.App_Start
+@using LotusViewModels.General
+@{
+    ViewBag.Title = "Platform";
+}
+<div class="row">
+    <h5>Redireccionando...</h5>
+    <img src="~/Content/Images/loading.gif" alt="Loading" style="max-width: 150px; width: 150px; height: 150px; display: block; margin: 0 auto;" />
+</div>
+@{
+    try
+    {
+        var fn = SessionConfig.CurrentApp.Menu.Where(x => !string.IsNullOrEmpty(x.Action)
+                                                      && !string.IsNullOrEmpty(x.Controller))
+                                                      .FirstOrDefault(x => x.Action.ToUpper().Equals("HOME"));
+        if (fn == null)
+        {
+            if (SessionConfig.CurrentApp.Menu.Count > 0)
+            {
+                <script>
+                    $(function () {
+                        window.location.href = "/" + '@SessionConfig.CurrentApp.Menu.FirstOrDefault().Controller' + "/" + '@SessionConfig.CurrentApp.Menu.FirstOrDefault().Action';
+                    });
+                </script>
+            }
+            else
+            {
+                <script>
+                    $(function () {
+                        window.location.href = "/";
+                    });
+                </script>
+            }
+        }
+        else
+        {
+            <script>
+                $(function () {
+                    window.location.href = "/" + '@fn.Controller' + "/" + '@fn.Action';
+                });
+            </script>
+        }
+    }
+    catch (Exception)
+    {
+        <script>
+                    $(function () {
+                        window.location.href = "/";
+                    });
+        </script>
+    }
+}

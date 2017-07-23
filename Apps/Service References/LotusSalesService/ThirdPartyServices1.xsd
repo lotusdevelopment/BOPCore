@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ViewModels.Request" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ViewModels.Request" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ViewModels.General" />
+  <xs:import schemaLocation="http://testbus.lotusodonto.com/ThirdPartyServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ViewModels" />
+  <xs:complexType name="SaleRequestBeneficiaries">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ViewModels.General" minOccurs="0" name="Beneficiaries" nillable="true" type="q1:ArrayOfBeneficiary" />
+      <xs:element minOccurs="0" name="Birthday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuyerCellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuyerEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuyerName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ViewModels.General" minOccurs="0" name="CardData" nillable="true" type="q2:ClientCard" />
+      <xs:element minOccurs="0" name="Cellphone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanySaleId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Complement" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q3:AuthorizeModel" />
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MotherName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Neighborhood" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentType" type="xs:int" />
+      <xs:element minOccurs="0" name="Plan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlateNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SellerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SaleRequestBeneficiaries" nillable="true" type="tns:SaleRequestBeneficiaries" />
+  <xs:complexType name="CountryRequest">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q4:AuthorizeModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CountryRequest" nillable="true" type="tns:CountryRequest" />
+  <xs:complexType name="PlansRequest">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q5:AuthorizeModel" />
+      <xs:element minOccurs="0" name="SellerCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlansRequest" nillable="true" type="tns:PlansRequest" />
+  <xs:complexType name="PlanByCountryRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q6:AuthorizeModel" />
+      <xs:element minOccurs="0" name="SellerCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanByCountryRequest" nillable="true" type="tns:PlanByCountryRequest" />
+  <xs:complexType name="UserRequest">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q7:AuthorizeModel" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserRequest" nillable="true" type="tns:UserRequest" />
+  <xs:complexType name="CheckSale">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanySaleId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q8:AuthorizeModel" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SellerCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CheckSale" nillable="true" type="tns:CheckSale" />
+  <xs:complexType name="SitesPerFilterRequest">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ViewModels" minOccurs="0" name="Credentials" nillable="true" type="q9:AuthorizeModel" />
+      <xs:element minOccurs="0" name="Parameter" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SitesPerFilterRequest" nillable="true" type="tns:SitesPerFilterRequest" />
+</xs:schema>

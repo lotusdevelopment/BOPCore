@@ -1,0 +1,20 @@
+﻿@using Apps.App_Start
+@{
+    Layout = null;
+}
+
+<div class="dropup">
+    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">
+        <img src="@SessionConfig.User.ProfilePicture" alt="user-img" class="img-circle">
+        <span class="user-info-span">
+            <h5 class="m-t-0 m-b-0">@SessionConfig.User.UserName</h5>
+            <p class="text-muted m-b-0">
+                <small><i class="fa fa-circle text-success"></i> <span class="trnlstxt">Online</span></small>
+            </p>
+        </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="@Url.Action("Manage", "Account")" class="trnlstxt"><i class="md md-face-unlock"></i>My Profile</a></li>
+        @Html.Partial("_LoginPartial")
+    </ul>
+</div>

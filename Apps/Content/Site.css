@@ -1,0 +1,427 @@
+﻿.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+.ftd {
+    text-align: right;
+    padding-right: 4pc;
+}
+
+.bgIcon {
+    /*background: url('Images/smilegoLogo.png') no-repeat;*/
+    -ms-background-size: 100% !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    width: 10pc;
+    margin-top: 5px;
+}
+
+.rowO {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#sltCountry, #Plans, #Genre, #Same {
+    display: block;
+    background: transparent;
+}
+
+#Cntr, #plny, #btnStep1 {
+    display: none;
+}
+
+.Cortinilla {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000000;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: none;
+}
+
+    .Cortinilla img {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+    }
+
+/*#btnStep1, #btnStep2, #btnStep {
+    margin-top: 1pc;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 300px;
+    display: block;
+}*/
+#btnStep1 {
+    float: right;
+    margin-top: 1pc;
+    width: 27%;
+}
+
+.steps-former {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+    .steps-former li {
+        display: inline-block;
+        width: 33%;
+        color: black;
+    }
+
+.ls-active {
+}
+
+.ls-past {
+    border-bottom: 1px solid #a3a3a3 !important;
+    color: #a3a3a3 !important;
+}
+
+#SaleForm {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#Stp1 div {
+    /*width: 70%;
+    margin: 0 auto;
+    margin-top: 1pc;*/
+}
+
+#btnStep2 {
+    margin-top: 2pc;
+    float: right;
+}
+
+.invalidA {
+    border-color: red !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.payment {
+    display: none;
+    float: left;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1pc;
+    margin-bottom: 1pc;
+}
+
+.input-field {
+    float: left;
+}
+
+.CortinillaWarning {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000000;
+    background: rgba(0,0,0,0.5);
+    z-index: 99999;
+    display: none;
+}
+
+
+#ContenedorWarning {
+    position: absolute;
+    width: 100%;
+    background: white;
+    padding: 5pc;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    min-width: 300px;
+}
+
+.title-error {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.title-success {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #951688;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.content-error, .content-success {
+    display: block;
+    width: 100%;
+    text-align: justify;
+    color: black;
+    margin-top: 1pc;
+    margin-bottom: 1pc;
+}
+
+.button-error, .button-success {
+    display: block;
+    float: none;
+    min-width: 300px;
+}
+
+.buy-review {
+    background: #f5f5f5;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+    .buy-review label {
+        position: relative;
+        color: black;
+        font-size: 1.2em;
+        margin-bottom: 1pc;
+        border-bottom: 1px solid black;
+    }
+
+.total-review {
+    display: block;
+    font-size: 1.5em;
+    color: #951688;
+}
+
+#CN {
+    background-repeat: no-repeat;
+    background-size: 50px 40px;
+    background-position: 100% 50%;
+}
+
+.subImp {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+.container-inner {
+    min-height: 350px;
+    width: 100%;
+    padding: 1pc;
+}
+
+.left-panel {
+    border-right: 1px solid black;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    min-height: 250px;
+}
+
+.left-menu {
+    padding-left: 10%;
+    margin-top: 1pc;
+}
+
+    .left-menu li {
+        padding: 5px;
+        border: 0;
+        border-radius: 5px;
+        background: black;
+        cursor: pointer;
+        margin-top: 1pc;
+    }
+
+        .left-menu li a {
+            color: white;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .left-menu li:hover {
+            background: white;
+            border: 1px solid black;
+        }
+
+            .left-menu li:hover a {
+                color: black;
+            }
+
+.welcome {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: black;
+    line-height: 5pc;
+    vertical-align: middle;
+    height: 100%;
+    font-size: 1.5em;
+}
+
+.spanier {
+    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+#Alone, #Bulk {
+    display: none;
+}
+
+.squared {
+    border: 1px solid black;
+    padding: 0.5pc;
+}
+
+.nptLeft {
+    width: 10%;
+}
+
+.title1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #c3c3c3;
+}
+
+.title2 {
+    margin-left: 5%;
+}
+
+#Alone input, #Alone select {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1pc;
+    padding: 0.5pc;
+}
+
+#bulkFile {
+    width: 100%;
+    max-width: 100%;
+    padding: 1pc;
+}
+
+.right-panel {
+    border-left: 1px solid black;
+}
+
+input[type="checkbox"] {
+    position: relative !important;
+    opacity: 1 !important;
+    z-index: 900 !important;
+    left: 0px !important;
+    display: inline-block;
+}
+
+[type="checkbox"] + label:before, [type="checkbox"]:not(.filled-in) + label:after {
+    display: none !important;
+}
+
+.hd11, .hd12 {
+    display: none;
+}
+
+.contins {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.lefty {
+    display: inline-block;
+    margin-left: 1pc;
+    margin-right: 1pc;
+}
+
+.btn-center {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#comissioning {
+    width: 5pc;
+}
+
+.incld {
+    display: none;
+    color: rgb(149, 22, 136) !important;
+    cursor: pointer !important;
+}
+
+@media (max-width: 900px) {
+    .steps-former li {
+        width: 100%;
+        margin-bottom: 1pc;
+    }
+
+
+
+    .container {
+        width: 100%;
+    }
+
+    #btnStep2, #btnStep1, #btnStep3 {
+        margin-top: 2pc;
+        float: none;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    input {
+        min-width: 280px;
+        max-width: 100% !important;
+    }
+
+    #Same {
+        margin-bottom: 1pc;
+    }
+
+    #Stp1 div {
+        width: 100%;
+    }
+
+    .input-field {
+        float: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .Cortinilla img {
+        top: 25%;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.buy-review ul {
+    list-style: none !important;
+    padding: 0 !important;
+}
+
+#uCreation {
+    display: none;
+}
