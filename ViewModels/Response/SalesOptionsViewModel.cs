@@ -1,6 +1,7 @@
 ﻿using LotusViewModels.General;
 using System.Collections.Generic;
 using ViewModels;
+using ViewModels.General;
 
 namespace LotusViewModels.Response
 {

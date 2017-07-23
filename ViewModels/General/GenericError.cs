@@ -1,4 +1,4 @@
-﻿namespace ViewModels.General
+﻿namespace ViewModels
 {
     public class GenericError
     {
