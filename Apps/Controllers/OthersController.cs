@@ -12,7 +12,6 @@ using Apps.App_Start;
 using Apps.Logic;
 using Apps.Logic.Authorize;
 using Apps.LotusSalesService;
-using Encrypt;
 using LotusViewModels.General;
 using ViewModels.ILotusAssistance;
 using ViewModels;

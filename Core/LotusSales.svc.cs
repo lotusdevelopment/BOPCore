@@ -560,16 +560,16 @@ namespace Core
             }
             catch (Exception e)
             {
-                _db.LogWs.Add(new LogWs
-                {
-                    DescripcionProceso = (!string.IsNullOrEmpty(_logProcess)) ? _logProcess + e.Message : e.Message,
-                    Fecha = DateTime.Now,
-                    Ip = "0.0.0.0",
-                    Proceso = (!string.IsNullOrEmpty(_currentProcess)) ? _currentProcess : "Empty Process",
-                    Url = "urlMistakenC",
-                    Usuario = (!string.IsNullOrEmpty(_loggedUser)) ? _loggedUser : "None"
-                });
-                _db.SaveChanges();
+                //_db.LogWs.Add(new LogWs
+                //{
+                //    DescripcionProceso = (!string.IsNullOrEmpty(_logProcess)) ? _logProcess + e.Message : e.Message,
+                //    Fecha = DateTime.Now,
+                //    Ip = "0.0.0.0",
+                //    Proceso = (!string.IsNullOrEmpty(_currentProcess)) ? _currentProcess : "Empty Process",
+                //    Url = "urlMistakenC",
+                //    Usuario = (!string.IsNullOrEmpty(_loggedUser)) ? _loggedUser : "None"
+                //});
+                //_db.SaveChanges();
             }
         }
 

@@ -31,8 +31,9 @@ namespace Core
         {
             try
             {
-                var query = "exec Sp_GetEntity '" + credentials.User + "', '" + credentials.Password + "', '1'";
-                return _db.Database.SqlQuery<bool>(query).FirstOrDefault();
+                var query = "exec Sp_GetEntity '" + credentials.User + "', '" + credentials.Password + "'";
+                var rtn = Convert.ToInt32(_db.Database.SqlQuery<string>(query).FirstOrDefault());
+                return rtn == 1;
             }
             catch (Exception e)
             {

@@ -130,7 +130,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppsAdminController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\HelpDeskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MANAGEMENTController.cs" />
     <Compile Include="Controllers\OthersController.cs" />
     <Compile Include="Controllers\PlatformController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Logic\Authorize\CustomPrincipal.cs" />
     <Compile Include="Logic\Authorize\SuppressHeadersAttribute.cs" />
     <Compile Include="Logic\CoreConnect.cs" />
+    <Compile Include="Logic\Encryption.cs" />
     <Compile Include="Logic\Generics.cs" />
     <Compile Include="Resources\CoreConnectionsT.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2891,6 +2894,8 @@
     <Content Include="Views\Others\SaleReview.cshtml" />
     <Content Include="Views\DashBoard\_SalesAdmin.cshtml" />
     <Content Include="Views\DashBoard\_Seller.cshtml" />
+    <Content Include="Views\HelpDesk\Home.cshtml" />
+    <Content Include="Views\MANAGEMENT\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

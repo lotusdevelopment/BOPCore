@@ -9,7 +9,6 @@ using Apps.App_Start;
 using Apps.Logic;
 using Apps.Logic.Authorize;
 using Apps.LotusSalesService;
-using Encrypt;
 using ViewModels;
 using ViewModels.General;
 using ViewModels.Request;
