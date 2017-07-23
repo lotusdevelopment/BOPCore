@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Configuration;
 using LotusViewModels.General;
-using LotusViewModels.ILotusAssistance;
+using ViewModels.ILotusAssistance;
 using LotusViewModels.Response;
 using Apps.Logic;
 

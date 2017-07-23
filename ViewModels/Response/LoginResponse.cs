@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using LotusViewModels.General;
-using LotusViewModels.ILotusAssistance;
+using ViewModels.ILotusAssistance;
 
 namespace LotusViewModels.Response
 {

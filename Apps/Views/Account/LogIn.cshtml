@@ -52,7 +52,7 @@
             margin: 0 auto;
         }
     </style>
-    <link id="favicon" rel="shortcut icon" type="image/png" href="~/favicon.ico">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="~/favicon.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <link href="~/Content/vendor/css/bootstrap.min.css" rel="stylesheet" />
@@ -100,7 +100,7 @@
                 <div class="col-md-4 col-md-offset-4 centered-div">
                     <div class="panel panel-default b-a-2 no-bg b-gray-dark">
                         <div class="panel-heading text-center">
-                            <img src="" class="branding-img-changing" />
+                            <img src="~/Content/Images/bopexternal.jpeg" class="branding-img-changing" />
                             <h2 class="text-center f-w-300 m-b-0"> @ViewBag.Title</h2>
                         </div>
                         <div class="panel-body">
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <p class="text-gray-light text-center">
-                        <strong class="m-r-1 branding-changing">Lotus Odonto. </strong>
+                        <strong class="m-r-1 branding-changing">Bop Help. </strong>
                         <span class="text-gray-dark">
                             &#xA9; @DateTime.Now.Year.
                         </span>
@@ -158,35 +158,12 @@
                     'margin-top': -$('.centered-div').height() / 2
                 });
             };
-            $(function () {
-                ChangeCompanyProperties();
+            $(function () {                
                 positioning();
                 $(window).resize(function () {
                     positioning();
                 });
-                /*$("form").submit(function () {
-                    setTimeout(function () {
-                        open(location, '_self').close();
-                    }, 1000);
-                });*/
             });
-            function ChangeCompanyProperties() {
-                var currentUrl = window.location.protocol + "//" + window.location.host;
-                var already = false;
-                $.get("../../Content/extras/companies.json", function (data) {
-                    $.each(data.Companies, function (i, j) {
-                        $.each(j.url, function (k, l) {
-                            if (already) return;
-                            if (currentUrl == l) {
-                                $(".branding-changing").html(j.name + '.');
-                                $(".branding-img-changing").attr("src", j.logo);
-                                $("#favicon").attr("href", j.favicon);
-                                already = true;
-                            }
-                        });
-                    });
-                });
-            }
         })();
 
     </script>

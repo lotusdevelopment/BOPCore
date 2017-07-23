@@ -1,7 +1,6 @@
 ﻿$(function () {
     checkStorage();
-    disableAutoComplete();
-    ChangeCompanyProperties();
+    disableAutoComplete();    
     AutoLogOut();
     InitDatePicker();
     localInfo();
@@ -238,22 +237,4 @@ function getUrlParameter(sParam) {
             return sParameterName[1] === undefined ? true : sParameterName[1];
         }
     }
-}
-
-function ChangeCompanyProperties() {
-    var currentUrl = window.location.protocol + "//" + window.location.host;
-    var already = false;
-    $.get("../Content/extras/companies.json", function (data) {
-        $.each(data.Companies, function (i, j) {
-            $.each(j.url, function (k, l) {
-                if (already) return;
-                if (currentUrl == l) {
-                    $(".branding-changing").html(j.name + '.');
-                    $(".branding-img-changing").attr("src", j.logo);
-                    $("#favicon").attr("href", j.favicon);
-                    already = true;
-                }
-            });
-        });
-    });
 }

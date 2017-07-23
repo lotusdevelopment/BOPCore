@@ -4,7 +4,7 @@ using System.Text;
 using Apps.App_Start;
 using Apps.Resources;
 using LotusViewModels.General;
-using LotusViewModels.ILotusAssistance;
+using ViewModels.ILotusAssistance;
 using LotusViewModels.Request;
 using Newtonsoft.Json;
 using Menu = System.Web.UI.WebControls.Menu;

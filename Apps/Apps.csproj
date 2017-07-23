@@ -163,12 +163,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ExternalSale.css" />
     <Content Include="Content\Images\amex.png" />
-    <Content Include="Content\Images\b1.jpg" />
-    <Content Include="Content\Images\CortinillaSmileGo.gif" />
+    <Content Include="Content\Images\bopexternal.jpeg" />
+    <Content Include="Content\Images\bophelplogo.png" />
     <Content Include="Content\Images\diners.png" />
     <Content Include="Content\Images\discover.jpg" />
     <Content Include="Content\Images\familiar.png" />
-    <Content Include="Content\Images\faviconLotus.ico" />
     <Content Include="Content\Images\individual.png" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\location.png" />
@@ -254,7 +253,7 @@
     <Content Include="Content\vendor\plugins\nvd3\build\nv.d3.css" />
     <Content Include="Content\vendor\plugins\nvd3\build\nv.d3.min.css" />
     <Content Include="Content\vendor\plugins\switchery.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />

@@ -4,7 +4,7 @@ using System.Linq;
 using ViewModels.General;
 using Apps.Resources;
 using LotusViewModels.General;
-using LotusViewModels.ILotusAssistance;
+using ViewModels.ILotusAssistance;
 using Newtonsoft.Json;
 using LotusViewModels.Response;
 using ViewModels;

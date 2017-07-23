@@ -1,21 +1,21 @@
 ﻿{
   "Company": {
-    "local": "http://localhost:40093/Company.svc/",
+    "local": "http://localhost:25668/Company.svc/",
     "production": "http://core.lotusodonto.com/Company.svc/",
     "test": "http://192.190.42.100/LotusCore/Company.svc/"
   },
   "Account": {
-    "local": "http://localhost:40093/Account.svc/",
+    "local": "http://localhost:25668/Account.svc/",
     "production": "http://core.lotusodonto.com/Account.svc/",
     "test": "http://192.190.42.100/LotusCore/Account.svc/"
   },
   "LotusSales": {
-    "local": "http://localhost:40093/LotusSales.svc/",
+    "local": "http://localhost:25668/LotusSales.svc/",
     "production": "http://core.lotusodonto.com/LotusSales.svc/",
     "test": "http://192.190.42.100/LotusCore/LotusSales.svc/"
   },
   "Sales": {
-    "local": "http://localhost:40093/Sales.svc/",
+    "local": "http://localhost:25668/Sales.svc/",
     "production": "http://core.lotusodonto.com/Sales.svc/",
     "test": "http://192.190.42.100/LotusCore/Sales.svc/"
   }

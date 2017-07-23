@@ -14,7 +14,7 @@ using Apps.Logic.Authorize;
 using Apps.LotusSalesService;
 using Encrypt;
 using LotusViewModels.General;
-using LotusViewModels.ILotusAssistance;
+using ViewModels.ILotusAssistance;
 using ViewModels;
 using ViewModels.General;
 using ViewModels.Request;
