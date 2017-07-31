@@ -10,6 +10,7 @@ namespace Core
     {
         /*Bop Methods*/
 
+        /*Prueba de clonacion, eliminar*/
         [OperationContract(Name = "LogIn")]
         [WebInvoke(Method = "POST", UriTemplate = "LogIn/{userName}/{password}",
             BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
