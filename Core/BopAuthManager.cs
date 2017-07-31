@@ -46,7 +46,7 @@ namespace Core
                     return (recycledHash.Equals(hash));
                 }
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
             }
             WebOperationContext.Current.OutgoingResponse.Headers.Add("WWW-Authenticate: Basic realm=\"BOPAuthService\"");

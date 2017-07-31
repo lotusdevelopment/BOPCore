@@ -14,7 +14,7 @@ namespace Core
     public interface IBopInner
     {
         [OperationContract(Name = "GetString")]
-        [WebInvoke(Method = "POST", UriTemplate = "GetString",
+        [WebInvoke(Method = "POST", UriTemplate = "GetString/{word}",
             BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
             ResponseFormat = WebMessageFormat.Json)]
         Task<string> GetString(string word);
