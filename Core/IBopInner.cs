@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Core
 {
@@ -11,7 +13,10 @@ namespace Core
     [ServiceContract]
     public interface IBopInner
     {
-        [OperationContract]
-        void DoWork();
+        [OperationContract(Name = "GetString")]
+        [WebInvoke(Method = "POST", UriTemplate = "GetString",
+            BodyStyle = WebMessageBodyStyle.Bare, RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+        Task<string> GetString(string word);
     }
 }
