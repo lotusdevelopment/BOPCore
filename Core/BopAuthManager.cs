@@ -13,7 +13,7 @@ namespace Core
 {
     public class BopAuthManager : ServiceAuthorizationManager
     {
-        private readonly BopDb _db = new BopDb();
+        private readonly GeneralDb _db = new GeneralDb();
         private readonly Serializers _srz = new Serializers();
 
         protected override bool CheckAccessCore(OperationContext operationContext)

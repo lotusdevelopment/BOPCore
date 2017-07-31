@@ -10,7 +10,7 @@ namespace Core
 {
     public class BopInner : IBopInner
     {
-        public async Task<string> GetString(string word)
+        public string GetString(string word)
         {
             return word;
         }
